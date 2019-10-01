@@ -23,7 +23,7 @@ public:
 	QSpinBox* tempSpin;
 	QHBoxLayout* layout;
 
-	characterAttribute(std::string name);
+	characterAttribute(std::string name, QGridLayout* layout, int row);
 
 	~characterAttribute();
 };

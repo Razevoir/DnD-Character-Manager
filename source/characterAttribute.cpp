@@ -1,6 +1,6 @@
 #include "characterAttribute.h"
 
-characterAttribute::characterAttribute(std::string characterName)
+characterAttribute::characterAttribute(std::string characterName, QGridLayout* layout, int row)
 {
 	name = characterName;
 	baseVal = 10;
@@ -16,14 +16,13 @@ characterAttribute::characterAttribute(std::string characterName)
 	levelSpin = new QSpinBox;
 	miscSpin = new QSpinBox;
 	tempSpin = new QSpinBox;
-	layout = new QHBoxLayout;
 
-	layout->addWidget(modLabel);
-	layout->addWidget(baseSpin);
-	layout->addWidget(raceLabel);
-	layout->addWidget(levelSpin);
-	layout->addWidget(miscSpin);
-	layout->addWidget(tempSpin);
+	layout->addWidget(modLabel, row, 0);
+	layout->addWidget(baseSpin, row, 1);
+	layout->addWidget(raceLabel, row, 2);
+	layout->addWidget(levelSpin, row, 3);
+	layout->addWidget(miscSpin, row, 4);
+	layout->addWidget(tempSpin, row, 5);
 }
 
 characterAttribute::~characterAttribute()
@@ -34,5 +33,4 @@ characterAttribute::~characterAttribute()
 	delete levelSpin;
 	delete miscSpin;
 	delete tempSpin;
-	delete layout;
 }
