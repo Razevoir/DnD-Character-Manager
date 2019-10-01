@@ -22,7 +22,7 @@ MainWidget::MainWidget(QWidget *parent) :
 		characterRaceMenu->addItem(tr(races.races.at(i)->name.c_str()));
 	}
 
-	QGridLayout *topLayout = new QGridLayout;
+	QGridLayout* topLayout = new QGridLayout;
 	topLayout->addWidget(characterNameLabel, 0, 0);
 	topLayout->addWidget(characterNameField, 0, 1);
 	topLayout->addWidget(playerNameLabel, 1, 0);
@@ -30,13 +30,24 @@ MainWidget::MainWidget(QWidget *parent) :
 	topLayout->addWidget(characterRaceLabel, 2, 0);
 	topLayout->addWidget(characterRaceMenu, 2, 1);
 
+	QHBoxLayout* healthLayout = new QHBoxLayout;
+	QLabel* HPNameLabel = new QLabel("Hit points:");
+	QLabel* HPLabel = new QLabel;
+	healthLayout->addWidget(HPNameLabel);
+	healthLayout->addWidget(HPLabel);
+
 	classes.loadClasses("classList");
 	selectorWidget* selector = new selectorWidget(&classes);
 
-	attributesWidget* attributeLayout = new attributesWidget;
+	attributesWidget* attributeLayout = new attributesWidget(&primaryCharacter, &races);
+
+	primaryCharacter = new character(&races, &classes, HPLabel);
+
+	attributeLayout->constitution.update();
 
 	QVBoxLayout *mainLayout = new QVBoxLayout;
 	mainLayout->addLayout(topLayout);
+	mainLayout->addLayout(healthLayout);
 	mainLayout->addLayout(selector->layout);
 	mainLayout->addLayout(attributeLayout->attributeLayout);
 

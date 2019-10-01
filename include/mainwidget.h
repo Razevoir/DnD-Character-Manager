@@ -8,6 +8,7 @@
 #include "raceList.h"
 #include "classList.h"
 #include "classSelector.h"
+#include "character.h"
 
 class QPushButton;
 class QTextBrowser;
@@ -32,6 +33,7 @@ private:
 	raceList races;
 	classList classes;
 	classSelector* selector;
+	character* primaryCharacter;
 };
 
 #endif // MAINWIDGET_H

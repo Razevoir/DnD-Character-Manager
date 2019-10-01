@@ -3,6 +3,8 @@
 
 #include <QtWidgets>
 #include "characterAttribute.h"
+#include "character.h"
+#include "raceList.h"
 
 class attributesWidget
 {
@@ -15,7 +17,7 @@ public:
 	characterAttribute wisdom;
 	characterAttribute charisma;
 
-	attributesWidget();
+	attributesWidget(character** lChar, raceList* allRaces);
 		
 	~attributesWidget();
 };
