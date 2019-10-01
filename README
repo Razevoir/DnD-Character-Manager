@@ -4,4 +4,4 @@ This project is a C++ implementation of my PyQt Dungeons and Dragons character m
 
 Build instructions:
 
-This project requires you to have the Qt developer tools installed (qmake and qtdeclarative5-dev), as well as the g++ compiler and GNU make. On Ubuntu systems, the only additional software you need should be included with the qt-default package.
+This project requires you to have the Qt developer tools installed (qmake and qtdeclarative5-dev), as well as the g++ compiler and GNU make. On Ubuntu systems, the only additional software you need should be included with the qt-default package. With all the required tools installed, you should be able to build simple by typing in "qmake" followed by "make" while you have the top level directory open.
