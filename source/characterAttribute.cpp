@@ -10,7 +10,7 @@ characterAttribute::characterAttribute(std::string characterName)
 	tempBonus = 0;
 
 	// GUI elements
-	modLabel = new QLabel;
+	modLabel = new QLabel(name.c_str());
 	baseSpin = new QSpinBox;
 	raceLabel = new QLabel;
 	levelSpin = new QSpinBox;

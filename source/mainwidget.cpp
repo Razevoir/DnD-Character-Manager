@@ -3,6 +3,7 @@
 #include "raceList.h"
 #include "characterAttribute.h"
 #include <QScrollArea>
+#include "attributesWidget.h"
 
 // Constructor for main widget
 MainWidget::MainWidget(QWidget *parent) :
@@ -73,22 +74,23 @@ MainWidget::MainWidget(QWidget *parent) :
 	mainLayout->addWidget(selectorScroll);
 	mainLayout->addWidget(addClassButton);
 
-	characterAttribute* strength = new characterAttribute("Strength");
-	characterAttribute* dexterity = new characterAttribute("Dexterity");
-	characterAttribute* constitution = new characterAttribute("Constitution");
-	characterAttribute* intelligence = new characterAttribute("Intelligence");
-	characterAttribute* wisdom = new characterAttribute("Wisdom");
-	characterAttribute* charisma = new characterAttribute("Charisma");
+	//characterAttribute* strength = new characterAttribute("Strength");
+	//characterAttribute* dexterity = new characterAttribute("Dexterity");
+	//characterAttribute* constitution = new characterAttribute("Constitution");
+	//characterAttribute* intelligence = new characterAttribute("Intelligence");
+	//characterAttribute* wisdom = new characterAttribute("Wisdom");
+	//characterAttribute* charisma = new characterAttribute("Charisma");
 
-	QVBoxLayout* attributeLayout = new QVBoxLayout;
-	attributeLayout->addLayout(strength->layout);
-	attributeLayout->addLayout(dexterity->layout);
-	attributeLayout->addLayout(constitution->layout);
-	attributeLayout->addLayout(intelligence->layout);
-	attributeLayout->addLayout(wisdom->layout);
-	attributeLayout->addLayout(charisma->layout);
+	/*QGridLayout* attributeLayout = new QGridLayout;
+	attributeLayout->addLayout(strength->layout, 1, 1);
+	attributeLayout->addLayout(dexterity->layout, 2, 1);
+	attributeLayout->addLayout(constitution->layout, 3, 1);
+	attributeLayout->addLayout(intelligence->layout, 4, 1);
+	attributeLayout->addLayout(wisdom->layout, 5, 1);
+	attributeLayout->addLayout(charisma->layout, 6, 1);*/
+	attributesWidget* attributeLayout = new attributesWidget;
 
-	mainLayout->addLayout(attributeLayout);
+	mainLayout->addLayout(attributeLayout->attributeLayout);
 
 	setLayout(mainLayout);
 	setWindowTitle(tr("Connecting buttons to processes.."));
@@ -97,8 +99,8 @@ MainWidget::MainWidget(QWidget *parent) :
 // Destructor
 MainWidget::~MainWidget()
 {
-   delete characterNameLabel;
+   /*delete characterNameLabel;
    delete characterNameField;
    delete playerNameLabel;
-   delete playerNameField;
+   delete playerNameField;*/
 }
