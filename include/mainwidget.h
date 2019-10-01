@@ -29,8 +29,6 @@ private:
 	QLineEdit* playerNameField;
 	QLabel* characterRaceLabel;
 	QComboBox* characterRaceMenu;
-	QLabel* characterClassLabel;
-	QComboBox* characterClassMenu;
 	raceList races;
 	classList classes;
 	classSelector* selector;

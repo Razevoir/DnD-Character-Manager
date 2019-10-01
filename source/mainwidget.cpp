@@ -1,9 +1,8 @@
-#include <QtWidgets>
 #include "mainwidget.h"
 #include "raceList.h"
 #include "characterAttribute.h"
-#include <QScrollArea>
 #include "attributesWidget.h"
+#include "selectorWidget.h"
 
 // Constructor for main widget
 MainWidget::MainWidget(QWidget *parent) :
@@ -27,8 +26,6 @@ MainWidget::MainWidget(QWidget *parent) :
 		characterRaceMenu->addItem(tr(races.races.at(i)->name.c_str()));
 	}
 
-	characterClassLabel = new QLabel(tr("Class:"));
-	characterClassMenu = new QComboBox();
 	classes.addClass("Barbarian", 12);
 	classes.addClass("Bard", 6);
 	classes.addClass("Cleric", 8);
@@ -44,12 +41,6 @@ MainWidget::MainWidget(QWidget *parent) :
 	classes.addClass("Soulknife", 10);
 	classes.addClass("Wilder", 6);
 	classes.addClass("Wizard", 4);
-	for (unsigned int i = 0; i < classes.classes.size(); i++)
-	{
-		characterClassMenu->addItem(tr(classes.classes.at(i)->name.c_str()));
-	}
-	selector = new classSelector(&classes);
-
 
 	QGridLayout *topLayout = new QGridLayout;
 	topLayout->addWidget(characterNameLabel, 0, 0);
@@ -59,37 +50,13 @@ MainWidget::MainWidget(QWidget *parent) :
 	topLayout->addWidget(characterRaceLabel, 2, 0);
 	topLayout->addWidget(characterRaceMenu, 2, 1);
 
-	QWidget* selectorWidget = new QWidget;
-	QVBoxLayout* selectorLayout = new QVBoxLayout;
-	selectorLayout->addLayout(selector->layout);
-	selectorWidget->setLayout(selectorLayout);
+	selectorWidget* selector = new selectorWidget(&classes);
 
-	QScrollArea* selectorScroll = new QScrollArea();
-	selectorScroll->setWidget(selectorWidget);
-
-	QPushButton* addClassButton = new QPushButton("Add class");
+	attributesWidget* attributeLayout = new attributesWidget;
 
 	QVBoxLayout *mainLayout = new QVBoxLayout;
 	mainLayout->addLayout(topLayout);
-	mainLayout->addWidget(selectorScroll);
-	mainLayout->addWidget(addClassButton);
-
-	//characterAttribute* strength = new characterAttribute("Strength");
-	//characterAttribute* dexterity = new characterAttribute("Dexterity");
-	//characterAttribute* constitution = new characterAttribute("Constitution");
-	//characterAttribute* intelligence = new characterAttribute("Intelligence");
-	//characterAttribute* wisdom = new characterAttribute("Wisdom");
-	//characterAttribute* charisma = new characterAttribute("Charisma");
-
-	/*QGridLayout* attributeLayout = new QGridLayout;
-	attributeLayout->addLayout(strength->layout, 1, 1);
-	attributeLayout->addLayout(dexterity->layout, 2, 1);
-	attributeLayout->addLayout(constitution->layout, 3, 1);
-	attributeLayout->addLayout(intelligence->layout, 4, 1);
-	attributeLayout->addLayout(wisdom->layout, 5, 1);
-	attributeLayout->addLayout(charisma->layout, 6, 1);*/
-	attributesWidget* attributeLayout = new attributesWidget;
-
+	mainLayout->addLayout(selector->layout);
 	mainLayout->addLayout(attributeLayout->attributeLayout);
 
 	setLayout(mainLayout);
@@ -99,8 +66,8 @@ MainWidget::MainWidget(QWidget *parent) :
 // Destructor
 MainWidget::~MainWidget()
 {
-   /*delete characterNameLabel;
+   delete characterNameLabel;
    delete characterNameField;
    delete playerNameLabel;
-   delete playerNameField;*/
+   delete playerNameField;
 }
