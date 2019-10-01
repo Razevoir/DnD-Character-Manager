@@ -1,6 +1,5 @@
 #include "raceList.h"
-#include <string>
-#include <vector>
+#include <fstream>
 
 raceList::raceList()
 {
@@ -20,6 +19,33 @@ void raceList::addRace(std::string name, int strBonus, int dexBonus, int conBonu
 	newRace->intBonus = intBonus;
 	newRace->wisBonus = wisBonus;
 	newRace->chaBonus = chaBonus;
+}
+
+void raceList::loadRaces(const char* fileName)
+{
+	//TODO: return -1 if file fails to open and respond accordingly
+	//TODO: change the format of the files sso race names can have spaces
+	std::ifstream inFile(fileName);
+	if (!inFile)
+		return;
+	std::string name;
+	int strBonus;
+	int dexBonus;
+	int conBonus;
+	int intBonus;
+	int wisBonus;
+	int chaBonus;
+	while (!inFile.eof())
+	{
+		inFile >> name;
+		inFile >> strBonus;
+		inFile >> dexBonus;
+		inFile >> conBonus;
+		inFile >> intBonus;
+		inFile >> wisBonus;
+		inFile >> chaBonus;
+		addRace(name, strBonus, dexBonus, conBonus, intBonus, wisBonus, chaBonus);
+	}
 }
 
 raceList::~raceList()

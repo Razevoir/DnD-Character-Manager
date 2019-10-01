@@ -1,6 +1,5 @@
 #include "classList.h"
-#include <string>
-#include <vector>
+#include <fstream>
 
 classList::classList()
 {
@@ -15,6 +14,23 @@ void classList::addClass(std::string name, int hitDie)
 	
 	newClass->name = name;
 	newClass->hitDie = hitDie;
+}
+
+void classList::loadClasses(const char* fileName)
+{
+	std::ifstream inFile(fileName);
+	//TODO: return -1 if file fails to open and respond accordingly
+	//TODO: change the format of the file so class names can have spaces
+	if (!inFile)
+		return;
+	std::string name;
+	int hitDie;
+	while (!inFile.eof())
+	{
+		inFile >> name;
+		inFile >> hitDie;
+		addClass(name, hitDie);
+	}
 }
 
 classList::~classList()

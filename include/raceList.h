@@ -21,7 +21,10 @@ public:
 
 //public:
 	raceList();
+
 	void addRace(std::string name, int strBonus, int dexBonus, int conBonus, int intBonus, int wisBonus, int chaBonus);
+	void loadRaces(const char* fileName);
+
 	~raceList();
 
 };

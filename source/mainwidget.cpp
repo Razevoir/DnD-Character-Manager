@@ -14,19 +14,20 @@ MainWidget::MainWidget(QWidget *parent) :
 	playerNameField = new QLineEdit();
 	characterRaceLabel = new QLabel(tr("Race:"));
 	characterRaceMenu = new QComboBox();
-	races.addRace("Dwarf", 0, 0, 2, 0, 0, -2);
+	/*races.addRace("Dwarf", 0, 0, 2, 0, 0, -2);
 	races.addRace("Elf", 0, 2, -2, 0, 0, 0);
 	races.addRace("Gnome", -2, 0, 2, 0, 0, 0);
 	races.addRace("Half-elf", 0, 0, 0, 0, 0, 0);
 	races.addRace("Half-orc", 2, 0, 0, -2, 0, -2);
 	races.addRace("Halfling", -2, 2, 0, 0, 0, 0);
-	races.addRace("Human", 0, 0, 0, 0, 0, 0);
+	races.addRace("Human", 0, 0, 0, 0, 0, 0);*/
+	races.loadRaces("raceList");
 	for (unsigned int i = 0; i < races.races.size(); i++)
 	{
 		characterRaceMenu->addItem(tr(races.races.at(i)->name.c_str()));
 	}
 
-	classes.addClass("Barbarian", 12);
+	/*classes.addClass("Barbarian", 12);
 	classes.addClass("Bard", 6);
 	classes.addClass("Cleric", 8);
 	classes.addClass("Druid", 8);
@@ -40,7 +41,8 @@ MainWidget::MainWidget(QWidget *parent) :
 	classes.addClass("Sorcerer", 4);
 	classes.addClass("Soulknife", 10);
 	classes.addClass("Wilder", 6);
-	classes.addClass("Wizard", 4);
+	classes.addClass("Wizard", 4);*/
+	classes.loadClasses("classList");
 
 	QGridLayout *topLayout = new QGridLayout;
 	topLayout->addWidget(characterNameLabel, 0, 0);

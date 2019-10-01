@@ -18,6 +18,7 @@ public:
 	classList();
 
 	void addClass(std::string name, int hitDie);
+	void loadClasses(const char* filename);
 
 	~classList();
 };
