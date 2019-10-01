@@ -1,0 +1,5 @@
+Makefile
+*.o
+.qmake.stash
+DnD-C++
+moc_*

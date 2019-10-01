@@ -1,0 +1,7 @@
+Introduction:
+
+This project is a C++ implementation of my PyQt Dungeons and Dragons character manager application. There primary reason for the shift over to C++ was that I discovered that the PyQt implmentation of Qt doesn't properly integrate with the host operating system's Qt settings, resulting in an application that looks a bit out of place.
+
+Build instructions:
+
+This project requires you to have the Qt developer tools installed (qmake and qtdeclarative5-dev), as well as the g++ compiler and GNU make. On Ubuntu systems, the only additional software you need should be included with the qt-default package.
