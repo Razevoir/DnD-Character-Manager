@@ -18,6 +18,9 @@ selectorWidget::selectorWidget(classList* classes)
 
 	addButton = new QPushButton("Add class");
 	layout->addWidget(addButton);
+
+	connect(selector, &classSelector::classChanged, this, &selectorWidget::updateClass);
+	connect(selector, &classSelector::levelChanged, this, &selectorWidget::updateLevel);
 }
 
 
@@ -31,5 +34,12 @@ selectorWidget::~selectorWidget()
 	delete selector;
 }
 
+void selectorWidget::updateClass(int index)
+{
+	emit classModified(index);
+}
 
-
+void selectorWidget::updateLevel(int index)
+{
+	emit levelModified(index);
+}

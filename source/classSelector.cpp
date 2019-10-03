@@ -1,7 +1,8 @@
 #include "classSelector.h"
 #include "classList.h"
 
-classSelector::classSelector(classList* classes)
+classSelector::classSelector(classList* classes, QWidget* parent)
+	: QWidget(parent)
 {
 	menu = new QComboBox;
 	levelSpin = new QSpinBox;
@@ -16,6 +17,22 @@ classSelector::classSelector(classList* classes)
 	layout->addWidget(menu);
 	layout->addWidget(levelSpin);
 	layout->addWidget(removeButton);
+
+	void (QComboBox::* classSignal)(int) = & QComboBox::currentIndexChanged;
+	connect(menu, classSignal, this, &classSelector::updateClass);
+
+	void (QSpinBox::* levelSignal)(int) = & QSpinBox::valueChanged;
+	connect(levelSpin, levelSignal, this, &classSelector::updateLevel);
+}
+
+void classSelector::updateClass(int index)
+{
+	emit classChanged(index);
+}
+
+void classSelector::updateLevel(int index)
+{
+	emit levelChanged(index);
 }
 
 classSelector::~classSelector()

@@ -8,19 +8,29 @@
 #include <QHBoxLayout>
 #include "classList.h"
 
-class classSelector
+class classSelector : public QWidget
 {
+
+	Q_OBJECT
+
 public:
 	QComboBox* menu;
 	QSpinBox* levelSpin;
 	QPushButton* removeButton;
 	QHBoxLayout* layout;
 
-	classSelector(classList* classes);
-
-	
+	classSelector(classList* classes, QWidget* parent = 0);
 
 	~classSelector();
+
+signals:
+	void classChanged(int index);
+	void levelChanged(int index);
+
+public slots:
+	void updateClass(int index);
+	void updateLevel(int index);
+
 };
 
 #endif

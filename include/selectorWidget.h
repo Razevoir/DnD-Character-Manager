@@ -5,8 +5,10 @@
 #include "selectorWidget.h"
 #include "classSelector.h"
 
-class selectorWidget
+class selectorWidget : public QWidget
 {
+	Q_OBJECT
+
 public:
 	classSelector* selector;
 	QVBoxLayout* backgroundLayout;
@@ -18,6 +20,14 @@ public:
 	selectorWidget(classList* classes);
 
 	~selectorWidget();
+
+signals:
+	void classModified(int index);
+	void levelModified(int index);
+
+public slots:
+	void updateClass(int index);
+	void updateLevel(int index);
 };
 
 #endif

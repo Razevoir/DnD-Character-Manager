@@ -41,6 +41,9 @@ MainWidget::MainWidget(QWidget *parent) :
 	classes.loadClasses("classList");
 	selectorWidget* selector = new selectorWidget(&classes);
 
+	connect(selector, &selectorWidget::classModified, this, &MainWidget::updateClass);
+	connect(selector, &selectorWidget::levelModified, this, &MainWidget::updateLevel);
+
 	attributeLayout = new attributesWidget();
 
 	connect(attributeLayout, &attributesWidget::attributesChanged, this, &MainWidget::updateAttributes);
@@ -85,4 +88,16 @@ void MainWidget::updateRace(int index)
 	attributeLayout->setRaceBonus(3, races.races.at(index)->intBonus);
 	attributeLayout->setRaceBonus(4, races.races.at(index)->wisBonus);
 	attributeLayout->setRaceBonus(5, races.races.at(index)->chaBonus);
+}
+
+void MainWidget::updateClass(int index)
+{
+	primaryCharacter->currentClass = index;
+	primaryCharacter->update();
+}
+
+void MainWidget::updateLevel(int index)
+{
+	primaryCharacter->currentLevel = index;
+	primaryCharacter->update();
 }

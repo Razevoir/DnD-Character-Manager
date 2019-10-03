@@ -17,6 +17,8 @@ public:
 	int currentClass;
 	classList* classes;
 
+	int currentLevel;
+
 	int strMod;
 	int dexMod;
 	int conMod;

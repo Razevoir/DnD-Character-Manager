@@ -43,7 +43,7 @@ void characterAttribute::update()
 	levelBonus = levelSpin->value();
 	miscBonus = miscSpin->value();
 	tempBonus = tempSpin->value();
-	modVal = floor(((baseVal+raceBonus+levelBonus+miscBonus+tempBonus)-10)/2);
+	modVal = floor((float(baseVal+raceBonus+levelBonus+miscBonus+tempBonus)-10.0)/2.0);
 
 	raceLabel->setText(std::to_string(raceBonus).c_str());
 	modLabel->setText(std::to_string(modVal).c_str());
