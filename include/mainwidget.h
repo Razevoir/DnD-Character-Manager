@@ -9,6 +9,7 @@
 #include "classList.h"
 #include "classSelector.h"
 #include "character.h"
+#include "attributesWidget.h"
 
 class QPushButton;
 class QTextBrowser;
@@ -23,6 +24,9 @@ public:
 	explicit MainWidget(QWidget *parent = 0); //Constructor
 	~MainWidget(); // Destructor
 
+public slots:
+	void updateAttributes();
+
 private:
 	QLabel* characterNameLabel;
 	QLineEdit* characterNameField;
@@ -30,6 +34,7 @@ private:
 	QLineEdit* playerNameField;
 	QLabel* characterRaceLabel;
 	QComboBox* characterRaceMenu;
+	attributesWidget* attributeLayout;
 	raceList races;
 	classList classes;
 	classSelector* selector;

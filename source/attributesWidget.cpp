@@ -14,6 +14,11 @@ attributesWidget::attributesWidget(QWidget* parent)
 {
 	//connect(strength.modUpdated to self.updateStr)
 	connect(&strength, &characterAttribute::modUpdated, this, &attributesWidget::updateStr);
+	connect(&dexterity, &characterAttribute::modUpdated, this, &attributesWidget::updateDex);
+	connect(&constitution, &characterAttribute::modUpdated, this, &attributesWidget::updateCon);
+	connect(&intelligence, &characterAttribute::modUpdated, this, &attributesWidget::updateInt);
+	connect(&wisdom, &characterAttribute::modUpdated, this, &attributesWidget::updateWis);
+	connect(&charisma, &characterAttribute::modUpdated, this, &attributesWidget::updateCha);
 }
 		
 attributesWidget::~attributesWidget()
@@ -24,29 +29,35 @@ attributesWidget::~attributesWidget()
 void attributesWidget::updateStr(int modVal)
 {
 	strMod = modVal;
+	emit attributesChanged();
 }
 
 void attributesWidget::updateDex(int modVal)
 {
 	dexMod = modVal;
+	emit attributesChanged();
 }
 
 void attributesWidget::updateCon(int modVal)
 {
 	conMod = modVal;
+	emit attributesChanged();
 }
 
 void attributesWidget::updateInt(int modVal)
 {
 	intMod = modVal;
+	emit attributesChanged();
 }
 
 void attributesWidget::updateWis(int modVal)
 {
 	wisMod = modVal;
+	emit attributesChanged();
 }
 
 void attributesWidget::updateCha(int modVal)
 {
 	chaMod = modVal;
+	emit attributesChanged();
 }

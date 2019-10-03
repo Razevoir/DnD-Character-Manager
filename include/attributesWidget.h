@@ -38,6 +38,9 @@ public slots:
 	void updateInt(int modVal);
 	void updateWis(int modVal);
 	void updateCha(int modVal);
+
+signals:
+	void attributesChanged();
 };
 
 #endif

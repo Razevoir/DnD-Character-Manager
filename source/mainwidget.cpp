@@ -39,7 +39,9 @@ MainWidget::MainWidget(QWidget *parent) :
 	classes.loadClasses("classList");
 	selectorWidget* selector = new selectorWidget(&classes);
 
-	attributesWidget* attributeLayout = new attributesWidget();
+	attributeLayout = new attributesWidget();
+
+	connect(attributeLayout, &attributesWidget::attributesChanged, this, &MainWidget::updateAttributes);
 
 	primaryCharacter = new character(&races, &classes, HPLabel);
 
@@ -64,4 +66,11 @@ MainWidget::~MainWidget()
    delete playerNameField;
    delete characterRaceLabel;
    delete characterRaceMenu;
+   delete attributeLayout;
+}
+
+void MainWidget::updateAttributes()
+{
+	primaryCharacter->conMod = attributeLayout->conMod;
+	primaryCharacter->update();
 }

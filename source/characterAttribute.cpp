@@ -48,6 +48,7 @@ void characterAttribute::update()
 	raceLabel->setText(std::to_string(raceBonus).c_str());
 	modLabel->setText(std::to_string(modVal).c_str());
 
+	emit modUpdated(modVal);
 	//(*linkedCharacter)->conMod = modVal;
 	//(*linkedCharacter)->update();
 }
