@@ -21,6 +21,8 @@ MainWidget::MainWidget(QWidget *parent) :
 	{
 		characterRaceMenu->addItem(tr(races.races.at(i)->name.c_str()));
 	}
+	void (QComboBox::* raceSignal)(int) = & QComboBox::currentIndexChanged;
+	connect(characterRaceMenu, raceSignal, this, &MainWidget::updateRace);
 
 	QGridLayout* topLayout = new QGridLayout;
 	topLayout->addWidget(characterNameLabel, 0, 0);
@@ -73,4 +75,14 @@ void MainWidget::updateAttributes()
 {
 	primaryCharacter->conMod = attributeLayout->conMod;
 	primaryCharacter->update();
+}
+
+void MainWidget::updateRace(int index)
+{
+	attributeLayout->setRaceBonus(0, races.races.at(index)->strBonus);
+	attributeLayout->setRaceBonus(1, races.races.at(index)->dexBonus);
+	attributeLayout->setRaceBonus(2, races.races.at(index)->conBonus);
+	attributeLayout->setRaceBonus(3, races.races.at(index)->intBonus);
+	attributeLayout->setRaceBonus(4, races.races.at(index)->wisBonus);
+	attributeLayout->setRaceBonus(5, races.races.at(index)->chaBonus);
 }

@@ -39,7 +39,7 @@ characterAttribute::characterAttribute(std::string characterName, QGridLayout* l
 void characterAttribute::update()
 {
 	baseVal = baseSpin->value();
-	raceBonus = 0;//races->races.at(currentRace)->conBonus;
+	//raceBonus = 0;//races->races.at(currentRace)->conBonus;
 	levelBonus = levelSpin->value();
 	miscBonus = miscSpin->value();
 	tempBonus = tempSpin->value();

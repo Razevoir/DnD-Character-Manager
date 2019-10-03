@@ -10,7 +10,8 @@ attributesWidget::attributesWidget(QWidget* parent)
 	constitution("Constitution", attributeLayout, 2),
 	intelligence("Intelligence", attributeLayout, 3),
 	wisdom("Wisdom", attributeLayout, 4),
-	charisma("Charisma", attributeLayout, 5)
+	charisma("Charisma", attributeLayout, 5),
+	attributes{&strength, &dexterity, &constitution, &intelligence, &wisdom, &charisma}
 {
 	//connect(strength.modUpdated to self.updateStr)
 	connect(&strength, &characterAttribute::modUpdated, this, &attributesWidget::updateStr);
@@ -24,6 +25,13 @@ attributesWidget::attributesWidget(QWidget* parent)
 attributesWidget::~attributesWidget()
 {
 	delete attributeLayout;
+}
+
+void attributesWidget::setRaceBonus(int index, int bonus)
+{
+	attributes[index]->raceBonus = bonus;
+	attributes[index]->update();
+	emit attributesChanged();
 }
 
 void attributesWidget::updateStr(int modVal)

@@ -21,6 +21,8 @@ public:
 	characterAttribute wisdom;
 	characterAttribute charisma;
 
+	characterAttribute* attributes[6];
+
 	int strMod;
 	int dexMod;
 	int conMod;
@@ -29,6 +31,8 @@ public:
 	int chaMod;
 
 	attributesWidget(QWidget* parent = 0);
+
+	void setRaceBonus(int attributeIndex, int bonus);
 		
 	~attributesWidget();
 public slots:

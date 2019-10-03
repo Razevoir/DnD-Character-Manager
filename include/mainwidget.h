@@ -26,6 +26,7 @@ public:
 
 public slots:
 	void updateAttributes();
+	void updateRace(int index);
 
 private:
 	QLabel* characterNameLabel;
