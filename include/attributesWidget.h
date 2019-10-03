@@ -1,13 +1,17 @@
 #ifndef ATTRIBUTES_WIDGET_H
 #define ATTRIBUTES_WIDGET_H
 
+#include <QObject>
 #include <QtWidgets>
 #include "characterAttribute.h"
 #include "character.h"
-#include "raceList.h"
+//#include "raceList.h"
 
-class attributesWidget
+class attributesWidget : public QWidget
 {
+
+	Q_OBJECT
+
 public:
 	QGridLayout* attributeLayout;
 	characterAttribute strength;
@@ -17,9 +21,23 @@ public:
 	characterAttribute wisdom;
 	characterAttribute charisma;
 
-	attributesWidget(character** lChar, raceList* allRaces);
+	int strMod;
+	int dexMod;
+	int conMod;
+	int intMod;
+	int wisMod;
+	int chaMod;
+
+	attributesWidget(QWidget* parent = 0);
 		
 	~attributesWidget();
+public slots:
+	void updateStr(int modVal);
+	void updateDex(int modVal);
+	void updateCon(int modVal);
+	void updateInt(int modVal);
+	void updateWis(int modVal);
+	void updateCha(int modVal);
 };
 
 #endif

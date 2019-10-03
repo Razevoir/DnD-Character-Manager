@@ -1,14 +1,18 @@
 #ifndef CHARACTER_ATTRIBUTE_H
 #define CHARACTER_ATTRIBUTE_H
 
+#include <QObject>
 #include <string>
 #include <QtWidgets>
 #include "raceList.h"
 #include "character.h"
-#include "raceList.h"
+//#include "raceList.h"
 
-class characterAttribute : public QWidget
+class characterAttribute : public QObject
 {
+
+	Q_OBJECT
+
 public:
 	std::string name;
 	int modVal;
@@ -33,11 +37,14 @@ public:
 
 	character** linkedCharacter;
 
-	explicit characterAttribute(std::string name, QGridLayout* layout, int row, character** lChar, raceList* allRaces, QWidget* parent = 0);
+	/*explicit*/ characterAttribute(std::string name, QGridLayout* layout, int row);
 
 	void update();
 
 	~characterAttribute();
+
+signals:
+	void modUpdated(int modVal);
 };
 
 #endif

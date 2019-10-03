@@ -39,7 +39,7 @@ MainWidget::MainWidget(QWidget *parent) :
 	classes.loadClasses("classList");
 	selectorWidget* selector = new selectorWidget(&classes);
 
-	attributesWidget* attributeLayout = new attributesWidget(&primaryCharacter, &races);
+	attributesWidget* attributeLayout = new attributesWidget();
 
 	primaryCharacter = new character(&races, &classes, HPLabel);
 

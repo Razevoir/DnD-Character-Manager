@@ -2,8 +2,7 @@
 #include <cmath>
 #include <QtGlobal>
 
-characterAttribute::characterAttribute(std::string characterName, QGridLayout* layout, int row, character** lChar, raceList* allRaces, QWidget* parent)
-	: QWidget(parent)
+characterAttribute::characterAttribute(std::string characterName, QGridLayout* layout, int row)
 {
 	name = characterName;
 	modVal = 0;
@@ -30,22 +29,17 @@ characterAttribute::characterAttribute(std::string characterName, QGridLayout* l
 	layout->addWidget(miscSpin, row, 5);
 	layout->addWidget(tempSpin, row, 6);
 
-	races=allRaces;
-	currentRace = 0;
-
 	void (QSpinBox::* mySignal)(int) = &QSpinBox::valueChanged;
 	connect(baseSpin, mySignal, this, &characterAttribute::update);
 	connect(levelSpin, mySignal, this, &characterAttribute::update);
 	connect(miscSpin, mySignal, this, &characterAttribute::update);
 	connect(tempSpin, mySignal, this, &characterAttribute::update);
-
-	linkedCharacter = lChar;
 }
 
 void characterAttribute::update()
 {
 	baseVal = baseSpin->value();
-	raceBonus = races->races.at(currentRace)->conBonus;
+	raceBonus = 0;//races->races.at(currentRace)->conBonus;
 	levelBonus = levelSpin->value();
 	miscBonus = miscSpin->value();
 	tempBonus = tempSpin->value();
@@ -54,8 +48,8 @@ void characterAttribute::update()
 	raceLabel->setText(std::to_string(raceBonus).c_str());
 	modLabel->setText(std::to_string(modVal).c_str());
 
-	(*linkedCharacter)->conMod = modVal;
-	(*linkedCharacter)->update();
+	//(*linkedCharacter)->conMod = modVal;
+	//(*linkedCharacter)->update();
 }
 
 characterAttribute::~characterAttribute()
