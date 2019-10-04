@@ -2,6 +2,7 @@
 #define SELECTOR_WIDGET_H
 
 #include <QtWidgets>
+#include <vector>
 #include "selectorWidget.h"
 #include "classSelector.h"
 
@@ -10,7 +11,8 @@ class selectorWidget : public QWidget
 	Q_OBJECT
 
 public:
-	classSelector* selector;
+	classList* classes;
+	std::vector<classSelector*> selectors;
 	QVBoxLayout* backgroundLayout;
 	QWidget* backgroundWidget;
 	QScrollArea* backgroundScroll;
@@ -24,10 +26,13 @@ public:
 signals:
 	void classModified(int index);
 	void levelModified(int index);
+	void classAdded();
 
 public slots:
 	void updateClass(int index);
 	void updateLevel(int index);
+	void addClass();
+	void removeClass(int index);
 };
 
 #endif

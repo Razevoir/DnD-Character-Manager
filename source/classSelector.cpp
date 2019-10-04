@@ -23,6 +23,8 @@ classSelector::classSelector(classList* classes, QWidget* parent)
 
 	void (QSpinBox::* levelSignal)(int) = & QSpinBox::valueChanged;
 	connect(levelSpin, levelSignal, this, &classSelector::updateLevel);
+
+	connect(removeButton, &QPushButton::clicked, this, &classSelector::removeClass);
 }
 
 void classSelector::updateClass(int index)
@@ -33,6 +35,11 @@ void classSelector::updateClass(int index)
 void classSelector::updateLevel(int index)
 {
 	emit levelChanged(index);
+}
+
+void classSelector::removeClass()
+{
+	emit removeButtonPressed(index);
 }
 
 classSelector::~classSelector()

@@ -18,6 +18,7 @@ public:
 	QSpinBox* levelSpin;
 	QPushButton* removeButton;
 	QHBoxLayout* layout;
+	int index;
 
 	classSelector(classList* classes, QWidget* parent = 0);
 
@@ -26,10 +27,12 @@ public:
 signals:
 	void classChanged(int index);
 	void levelChanged(int index);
+	void removeButtonPressed(int index);
 
 public slots:
 	void updateClass(int index);
 	void updateLevel(int index);
+	void removeClass();
 
 };
 
