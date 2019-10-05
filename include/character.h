@@ -5,6 +5,7 @@
 #include "raceList.h"
 #include "classList.h"
 #include <string>
+#include <vector>
 
 class character
 {
@@ -16,6 +17,9 @@ public:
 
 	int currentClass;
 	classList* classes;
+
+	std::vector<int> knownClasses;
+	std::vector<int> classLevels;
 
 	int currentLevel;
 
@@ -30,6 +34,7 @@ public:
 
 	character(raceList* allRaces, classList* allClasses, QLabel* wHPLabel);
 	void update();
+	void addClass();
 	~character();
 };
 

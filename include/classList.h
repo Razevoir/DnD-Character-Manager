@@ -9,6 +9,7 @@ class classList
 	struct characterClass
 	{
 		std::string name;
+		int levelsTaken=0;
 		int hitDie;
 	};
 

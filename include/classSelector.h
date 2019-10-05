@@ -19,19 +19,22 @@ public:
 	QPushButton* removeButton;
 	QHBoxLayout* layout;
 	int index;
+	int classIndex=0;
+	int levelValue=0;
 
 	classSelector(classList* classes, QWidget* parent = 0);
 
 	~classSelector();
 
 signals:
-	void classChanged(int index);
-	void levelChanged(int index);
+	//void classChanged(int classIndex, int selectorIndex);
+	//void levelChanged(int levelValue, int selectorIndex);
+	void classChanged(int classIndex, int levelValue, int myIndex);
 	void removeButtonPressed(int index);
 
 public slots:
-	void updateClass(int index);
-	void updateLevel(int index);
+	void updateClass(int newClassIndex);
+	void updateLevel(int newLevelValue);
 	void removeClass();
 
 };

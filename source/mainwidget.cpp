@@ -42,7 +42,8 @@ MainWidget::MainWidget(QWidget *parent) :
 	selectorWidget* selector = new selectorWidget(&classes);
 
 	connect(selector, &selectorWidget::classModified, this, &MainWidget::updateClass);
-	connect(selector, &selectorWidget::levelModified, this, &MainWidget::updateLevel);
+	//connect(selector, &selectorWidget::levelModified, this, &MainWidget::updateLevel);
+	connect(selector, &selectorWidget::classAdded, this, &MainWidget::addClass);
 
 	attributeLayout = new attributesWidget();
 
@@ -90,14 +91,23 @@ void MainWidget::updateRace(int index)
 	attributeLayout->setRaceBonus(5, races.races.at(index)->chaBonus);
 }
 
-void MainWidget::updateClass(int index)
+void MainWidget::updateClass(int classIndex, int levelValue, int selectorIndex)
 {
-	primaryCharacter->currentClass = index;
+	primaryCharacter->knownClasses[selectorIndex] = classIndex;
+	primaryCharacter->classLevels[selectorIndex] = levelValue;
 	primaryCharacter->update();
+	QMessageBox msgBox;
+	msgBox.setText("Benis");
+	msgBox.exec();
 }
 
-void MainWidget::updateLevel(int index)
+/*void MainWidget::updateLevel(int index)
 {
 	primaryCharacter->currentLevel = index;
 	primaryCharacter->update();
+}*/
+
+void MainWidget::addClass()
+{
+	primaryCharacter->addClass();
 }

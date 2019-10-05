@@ -27,14 +27,16 @@ classSelector::classSelector(classList* classes, QWidget* parent)
 	connect(removeButton, &QPushButton::clicked, this, &classSelector::removeClass);
 }
 
-void classSelector::updateClass(int index)
+void classSelector::updateClass(int newClassIndex)
 {
-	emit classChanged(index);
+	classIndex = newClassIndex;
+	emit classChanged(classIndex, levelValue, index);
 }
 
-void classSelector::updateLevel(int index)
+void classSelector::updateLevel(int newLevelValue)
 {
-	emit levelChanged(index);
+	levelValue = newLevelValue;
+	emit classChanged(classIndex, newLevelValue, index);
 }
 
 void classSelector::removeClass()
