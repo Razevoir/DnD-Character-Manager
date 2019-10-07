@@ -33,11 +33,11 @@ void character::update()
 	{
 		if (i != 0)
 		{
-			hitPoints += (std::ceil(((classes->classes[knownClasses[i]]->hitDie)+1)/2)+conMod)*classLevels[i];
+			hitPoints += (std::ceil(float((classes->classes[knownClasses[i]]->hitDie)+1.0)/2.0)+conMod)*classLevels[i];
 		}
 		else
 		{
-			hitPoints += (std::ceil(((classes->classes[knownClasses[i]]->hitDie)+1)/2)+conMod)*std::max(classLevels[i]-1, 0);
+			hitPoints += (std::ceil(float((classes->classes[knownClasses[i]]->hitDie)+1.0)/2.0)+conMod)*std::max(classLevels[i]-1, 0);
 		}
 	}
 	HPLabel->setText(std::to_string(hitPoints).c_str());
