@@ -60,7 +60,7 @@ MainWidget::MainWidget(QWidget *parent) :
 	mainLayout->addLayout(attributeLayout->attributeLayout);
 
 	setLayout(mainLayout);
-	setWindowTitle(tr("Connecting buttons to processes.."));
+	setWindowTitle(tr("Dungeons and Dragons Character Manager"));
 }
 
 // Destructor
@@ -96,9 +96,6 @@ void MainWidget::updateClass(int classIndex, int levelValue, int selectorIndex)
 	primaryCharacter->knownClasses[selectorIndex] = classIndex;
 	primaryCharacter->classLevels[selectorIndex] = levelValue;
 	primaryCharacter->update();
-	QMessageBox msgBox;
-	msgBox.setText("Benis");
-	msgBox.exec();
 }
 
 /*void MainWidget::updateLevel(int index)

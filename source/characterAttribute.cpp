@@ -1,6 +1,7 @@
 #include "characterAttribute.h"
 #include <cmath>
 #include <QtGlobal>
+#include <Qt>
 
 characterAttribute::characterAttribute(std::string characterName, QGridLayout* layout, int row)
 {
@@ -15,8 +16,10 @@ characterAttribute::characterAttribute(std::string characterName, QGridLayout* l
 	// GUI elements
 	nameLabel = new QLabel(name.c_str());
 	modLabel = new QLabel;
+	modLabel->setAlignment(Qt::AlignRight);
 	baseSpin = new QSpinBox;
 	raceLabel = new QLabel;
+	raceLabel->setAlignment(Qt::AlignRight);
 	levelSpin = new QSpinBox;
 	miscSpin = new QSpinBox;
 	tempSpin = new QSpinBox;
