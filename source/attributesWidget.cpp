@@ -13,7 +13,6 @@ attributesWidget::attributesWidget(QWidget* parent)
 	charisma("Charisma", attributeLayout, 5),
 	attributes{&strength, &dexterity, &constitution, &intelligence, &wisdom, &charisma}
 {
-	//connect(strength.modUpdated to self.updateStr)
 	connect(&strength, &characterAttribute::modUpdated, this, &attributesWidget::updateStr);
 	connect(&dexterity, &characterAttribute::modUpdated, this, &attributesWidget::updateDex);
 	connect(&constitution, &characterAttribute::modUpdated, this, &attributesWidget::updateCon);

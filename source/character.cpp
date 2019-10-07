@@ -28,11 +28,17 @@ character::character(raceList* allRaces, classList* allClasses, QLabel* wHPLabel
 
 void character::update()
 {
-	//hitPoints = classes->classes.at(currentClass)->hitDie+conMod+ceil((float(classes->classes.at(currentClass)->hitDie)+1.0)/2+conMod)*std::max(currentLevel-1, 0);
-	hitPoints = 0;
+	hitPoints = classes->classes[knownClasses[0]]->hitDie+conMod;
 	for (unsigned int i=0; i<knownClasses.size(); ++i)
 	{
-		hitPoints += classes->classes[knownClasses[i]]->hitDie;
+		if (i != 0)
+		{
+			hitPoints += (std::ceil(((classes->classes[knownClasses[i]]->hitDie)+1)/2)+conMod)*classLevels[i];
+		}
+		else
+		{
+			hitPoints += (std::ceil(((classes->classes[knownClasses[i]]->hitDie)+1)/2)+conMod)*std::max(classLevels[i]-1, 0);
+		}
 	}
 	HPLabel->setText(std::to_string(hitPoints).c_str());
 }

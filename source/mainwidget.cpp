@@ -42,7 +42,6 @@ MainWidget::MainWidget(QWidget *parent) :
 	selectorWidget* selector = new selectorWidget(&classes);
 
 	connect(selector, &selectorWidget::classModified, this, &MainWidget::updateClass);
-	//connect(selector, &selectorWidget::levelModified, this, &MainWidget::updateLevel);
 	connect(selector, &selectorWidget::classAdded, this, &MainWidget::addClass);
 
 	attributeLayout = new attributesWidget();
@@ -97,12 +96,6 @@ void MainWidget::updateClass(int classIndex, int levelValue, int selectorIndex)
 	primaryCharacter->classLevels[selectorIndex] = levelValue;
 	primaryCharacter->update();
 }
-
-/*void MainWidget::updateLevel(int index)
-{
-	primaryCharacter->currentLevel = index;
-	primaryCharacter->update();
-}*/
 
 void MainWidget::addClass()
 {

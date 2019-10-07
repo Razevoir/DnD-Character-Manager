@@ -43,13 +43,8 @@ selectorWidget::~selectorWidget()
 
 void selectorWidget::updateClass(int classIndex, int levelValue, int selectorIndex)
 {
-	emit classModified(classIndex, selectorIndex, selectorIndex);
+	emit classModified(classIndex, levelValue, selectorIndex);
 }
-
-/*void selectorWidget::updateLevel(int levelValue, int selectorIndex)
-{
-	emit levelModified(levelValue);
-}*/
 
 void selectorWidget::addClass()
 {
