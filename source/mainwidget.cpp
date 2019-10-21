@@ -24,6 +24,8 @@ MainWidget::MainWidget(QWidget *parent) :
 	void (QComboBox::* raceSignal)(int) = & QComboBox::currentIndexChanged;
 	connect(characterRaceMenu, raceSignal, this, &MainWidget::updateRace);
 
+	skills.loadSkills("skillList");
+
 	QGridLayout* topLayout = new QGridLayout;
 	topLayout->addWidget(characterNameLabel, 0, 0);
 	topLayout->addWidget(characterNameField, 0, 1);

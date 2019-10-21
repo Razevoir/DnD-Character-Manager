@@ -7,6 +7,7 @@
 #include <QComboBox>
 #include "raceList.h"
 #include "classList.h"
+#include "skillList.h"
 #include "classSelector.h"
 #include "character.h"
 #include "attributesWidget.h"
@@ -41,6 +42,7 @@ private:
 	attributesWidget* attributeLayout;
 	raceList races;
 	classList classes;
+	skillList skills;
 	classSelector* selector;
 	character* primaryCharacter;
 };
