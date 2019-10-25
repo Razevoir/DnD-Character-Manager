@@ -24,8 +24,6 @@ MainWidget::MainWidget(QWidget *parent) :
 	void (QComboBox::* raceSignal)(int) = & QComboBox::currentIndexChanged;
 	connect(characterRaceMenu, raceSignal, this, &MainWidget::updateRace);
 
-	skills.loadSkills("skillList");
-
 	QGridLayout* topLayout = new QGridLayout;
 	topLayout->addWidget(characterNameLabel, 0, 0);
 	topLayout->addWidget(characterNameField, 0, 1);
@@ -50,6 +48,10 @@ MainWidget::MainWidget(QWidget *parent) :
 
 	connect(attributeLayout, &attributesWidget::attributesChanged, this, &MainWidget::updateAttributes);
 
+	skills.loadSkills("skillList");
+
+	skillsLayout = new skillsWidget(&skills);
+
 	primaryCharacter = new character(&races, &classes, HPLabel);
 
 	attributeLayout->constitution.update();
@@ -59,6 +61,7 @@ MainWidget::MainWidget(QWidget *parent) :
 	mainLayout->addLayout(healthLayout);
 	mainLayout->addLayout(selector->layout);
 	mainLayout->addLayout(attributeLayout->attributeLayout);
+	mainLayout->addLayout(skillsLayout->skillsLayout);
 
 	setLayout(mainLayout);
 	setWindowTitle(tr("Dungeons and Dragons Character Manager"));

@@ -17,7 +17,7 @@ public:
 	int modVal;
 	int baseVal;
 	int raceBonus;
-	int levelBonus;
+	int rankBonus;
 	int miscBonus;
 	int tempBonus;
 
@@ -26,7 +26,7 @@ public:
 	QLabel* modLabel;
 	QSpinBox* baseSpin;
 	QLabel* raceLabel;
-	QSpinBox* levelSpin;
+	QSpinBox* rankSpin;
 	QSpinBox* miscSpin;
 	QSpinBox* tempSpin;
 	QHBoxLayout* layout;
@@ -34,7 +34,7 @@ public:
 	//raceList* races;
 	//int currentRace = 0;
 
-	character** linkedCharacter;
+	//character** linkedCharacter;
 
 	/*explicit*/ characterSkill(std::string name, QGridLayout* layout, int row);
 

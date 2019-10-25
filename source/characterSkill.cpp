@@ -9,7 +9,7 @@ characterSkill::characterSkill(std::string skillName, QGridLayout* layout, int r
 	modVal = 0;
 	baseVal = 10;
 	raceBonus = 0;
-	levelBonus = 0;
+	rankBonus = 0;
 	miscBonus = 0;
 	tempBonus = 0;
 
@@ -20,7 +20,7 @@ characterSkill::characterSkill(std::string skillName, QGridLayout* layout, int r
 	baseSpin = new QSpinBox;
 	raceLabel = new QLabel;
 	raceLabel->setAlignment(Qt::AlignRight);
-	levelSpin = new QSpinBox;
+	rankSpin = new QSpinBox;
 	miscSpin = new QSpinBox;
 	tempSpin = new QSpinBox;
 
@@ -28,7 +28,7 @@ characterSkill::characterSkill(std::string skillName, QGridLayout* layout, int r
 	layout->addWidget(modLabel, row, 1);
 	layout->addWidget(baseSpin, row, 2);
 	layout->addWidget(raceLabel, row, 3);
-	layout->addWidget(levelSpin, row, 4);
+	layout->addWidget(rankSpin, row, 4);
 	layout->addWidget(miscSpin, row, 5);
 	layout->addWidget(tempSpin, row, 6);
 
@@ -41,15 +41,15 @@ characterSkill::characterSkill(std::string skillName, QGridLayout* layout, int r
 
 void characterSkill::update()
 {
-	//baseVal = baseSpin->value();
-	////raceBonus = 0;//races->races.at(currentRace)->conBonus;
-	//levelBonus = levelSpin->value();
-	//miscBonus = miscSpin->value();
-	//tempBonus = tempSpin->value();
-	//modVal = floor((float(baseVal+raceBonus+levelBonus+miscBonus+tempBonus)-10.0)/2.0);
+	baseVal = baseSpin->value();
+	//raceBonus = 0;//races->races.at(currentRace)->conBonus;
+	rankBonus = rankSpin->value();
+	miscBonus = miscSpin->value();
+	tempBonus = tempSpin->value();
+	modVal = floor((float(baseVal+raceBonus+rankBonus+miscBonus+tempBonus)-10.0)/2.0);
 
 	//raceLabel->setText(std::to_string(raceBonus).c_str());
-	//modLabel->setText(std::to_string(modVal).c_str());
+	modLabel->setText(std::to_string(modVal).c_str());
 
 	//emit modUpdated(modVal);
 	//(*linkedCharacter)->conMod = modVal;
@@ -61,7 +61,7 @@ characterSkill::~characterSkill()
 	delete modLabel;
 	delete baseSpin;
 	delete raceLabel;
-	delete levelSpin;
+	delete rankSpin;
 	delete miscSpin;
 	delete tempSpin;
 }

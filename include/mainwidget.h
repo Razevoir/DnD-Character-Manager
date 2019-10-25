@@ -11,6 +11,7 @@
 #include "classSelector.h"
 #include "character.h"
 #include "attributesWidget.h"
+#include "skillsWidget.h"
 
 class QPushButton;
 class QTextBrowser;
@@ -40,6 +41,7 @@ private:
 	QLabel* characterRaceLabel;
 	QComboBox* characterRaceMenu;
 	attributesWidget* attributeLayout;
+	skillsWidget* skillsLayout;
 	raceList races;
 	classList classes;
 	skillList skills;
