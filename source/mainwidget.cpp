@@ -56,12 +56,15 @@ MainWidget::MainWidget(QWidget *parent) :
 
 	attributeLayout->constitution.update();
 
-	QVBoxLayout *mainLayout = new QVBoxLayout;
-	mainLayout->addLayout(topLayout);
-	mainLayout->addLayout(healthLayout);
-	mainLayout->addLayout(selector->layout);
-	mainLayout->addLayout(attributeLayout->attributeLayout);
-	mainLayout->addLayout(skillsLayout->skillsLayout);
+	QVBoxLayout* statsLayout = new QVBoxLayout;
+	statsLayout->addLayout(topLayout);
+	statsLayout->addLayout(healthLayout);
+	statsLayout->addLayout(selector->layout);
+	statsLayout->addLayout(attributeLayout->attributeLayout);
+
+	QHBoxLayout* mainLayout = new QHBoxLayout;
+	mainLayout->addLayout(statsLayout);
+	mainLayout->addWidget(skillsLayout->backgroundScroll);
 
 	setLayout(mainLayout);
 	setWindowTitle(tr("Dungeons and Dragons Character Manager"));

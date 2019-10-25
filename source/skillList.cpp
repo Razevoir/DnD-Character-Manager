@@ -1,6 +1,5 @@
 #include "skillList.h"
 #include <fstream>
-#include <iostream>
 
 skillList::skillList()
 {
@@ -31,7 +30,6 @@ void skillList::loadSkills(const char* fileName)
 		inFile >> name;
 		inFile >> ability;
 		addSkill(name, ability);
-		std::cout << name << "\t" << ability << std::endl;
 	}
 }
 

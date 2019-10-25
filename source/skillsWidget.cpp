@@ -14,12 +14,18 @@ skillsWidget::skillsWidget(skillList* allSkills, QWidget* parent)
 		newSkill = new characterSkill(allSkills->skills.at(i)->name, skillsLayout, i);
 		skills.push_back(newSkill);
 	}
+	backgroundWidget = new QWidget;
+	backgroundWidget->setLayout(skillsLayout);
+	backgroundScroll = new QScrollArea;
+	backgroundScroll->setWidget(backgroundWidget);
 	//connect(&strength, &characterAttribute::modUpdated, this, &attributesWidget::updateStr);
 }
 		
 skillsWidget::~skillsWidget()
 {
 	delete skillsLayout;
+	delete backgroundWidget;
+	delete backgroundScroll;
 }
 
 /*void attributesWidget::setRaceBonus(int index, int bonus)

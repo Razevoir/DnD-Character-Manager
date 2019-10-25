@@ -16,6 +16,8 @@ class skillsWidget : public QWidget
 
 public:
 	QGridLayout* skillsLayout;
+	QWidget* backgroundWidget;
+	QScrollArea* backgroundScroll;
 
 	std::vector<characterSkill*> skills;
 
