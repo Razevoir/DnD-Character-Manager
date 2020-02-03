@@ -1,5 +1,4 @@
-#ifndef CHARACTER_H
-#define CHARACTER_H
+#pragma once
 
 #include <QtWidgets>
 #include "raceList.h"
@@ -36,6 +35,9 @@ public:
 	void update();
 	void addClass();
 	~character();
-};
 
-#endif
+	inline static const character* getInstance() { return s_instance; };
+
+private:
+	static character* s_instance;
+};

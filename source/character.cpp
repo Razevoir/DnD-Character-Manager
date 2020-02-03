@@ -2,8 +2,12 @@
 #include <cmath>
 #include <algorithm>
 
+character* character::s_instance = nullptr;
+
 character::character(raceList* allRaces, classList* allClasses, QLabel* wHPLabel)
 {
+	s_instance = this;
+	
 	hitPoints = 0;
 
 	currentRace = 0;
