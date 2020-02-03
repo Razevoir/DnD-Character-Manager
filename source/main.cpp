@@ -1,12 +1,12 @@
-#include <QtWidgets>
-#include "mainwidget.h"
+#include "application_qt.h"
 
 int main(int argc, char* argv[])
 {
-	QApplication app(argc, argv);
+	{
+		std::unique_ptr<application> app = application::create(argc, argv);
 
-	MainWidget w;
-	w.show();
+		app->run();
+	}
 
-	return app.exec();
+	return 0;
 }

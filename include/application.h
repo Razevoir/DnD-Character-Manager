@@ -9,5 +9,7 @@ public:
 
 	virtual ~application() = default;
 
+	virtual void run() = 0;
+
 	virtual void update() = 0;
 };
