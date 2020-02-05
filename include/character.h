@@ -6,6 +6,17 @@
 #include <string>
 #include <vector>
 
+struct attribute
+{
+	std::string name;
+	int value;
+	int modifier;
+	int ranks;
+	int racialBonus;
+	int misc;
+	int temp;
+};
+
 class character
 {
 public:
@@ -37,14 +48,7 @@ private:
 	std::vector<int> knownClasses;
 	std::vector<int> classLevels;
 
-	int currentLevel;
-
-	int strMod;
-	int dexMod;
-	int conMod;
-	int intMod;
-	int wisMod;
-	int chaMod;
+	attribute strength, dexterity, constitution, intelligence, wisdom, charisma;
 
 	static character* s_instance;
 };
