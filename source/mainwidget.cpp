@@ -17,7 +17,7 @@ MainWidget::MainWidget(QWidget *parent) :
 	characterRaceLabel = new QLabel(tr("Race:"));
 	characterRaceMenu = new QComboBox();
 
-	for (auto i : character::getInstance()->races.races)
+	for (auto i : character::getInstance()->getRaces().races)
 	{
 		characterRaceMenu->addItem(tr(i->name.c_str()));
 	}
@@ -32,13 +32,13 @@ MainWidget::MainWidget(QWidget *parent) :
 	topLayout->addWidget(characterRaceLabel, 2, 0);
 	topLayout->addWidget(characterRaceMenu, 2, 1);
 
-	//QHBoxLayout* healthLayout = new QHBoxLayout;
-	//QLabel* HPNameLabel = new QLabel("Hit points:");
-	//QLabel* HPLabel = new QLabel;
-	//healthLayout->addWidget(HPNameLabel);
-	//healthLayout->addWidget(HPLabel);
+	QHBoxLayout* healthLayout = new QHBoxLayout;
+	QLabel* HPNameLabel = new QLabel("Hit points:");
+	QLabel* HPLabel = new QLabel;
+	healthLayout->addWidget(HPNameLabel);
+	healthLayout->addWidget(HPLabel);
 
-	//selectorWidget* selector = new selectorWidget(character::getInstance()->classes);
+	selectorWidget* selector = new selectorWidget(character::getInstance()->getClasses());
 
 	//connect(selector, &selectorWidget::classModified, this, &MainWidget::updateClass);
 	//connect(selector, &selectorWidget::classAdded, this, &MainWidget::addClass);
@@ -53,8 +53,8 @@ MainWidget::MainWidget(QWidget *parent) :
 
 	QVBoxLayout* statsLayout = new QVBoxLayout;
 	statsLayout->addLayout(topLayout);
-	//statsLayout->addLayout(healthLayout);
-	//statsLayout->addLayout(selector->layout);
+	statsLayout->addLayout(healthLayout);
+	statsLayout->addLayout(selector->layout);
 	//statsLayout->addLayout(attributeLayout->attributeLayout);
 
 	QHBoxLayout* mainLayout = new QHBoxLayout;
@@ -62,7 +62,7 @@ MainWidget::MainWidget(QWidget *parent) :
 	//mainLayout->addWidget(skillsLayout->backgroundScroll);
 
 	setLayout(mainLayout);
-	//setWindowTitle(tr("Dungeons and Dragons Character Manager"));
+	setWindowTitle(tr("Dungeons and Dragons Character Manager"));
 }
 
 // Destructor

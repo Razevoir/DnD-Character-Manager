@@ -9,6 +9,20 @@
 class character
 {
 public:
+
+	character();
+	~character();
+
+	void update();
+	void addClass();
+
+	inline const raceList& getRaces() const { return races; };
+
+	inline const classList& getClasses() const { return classes; };
+
+	inline static const character* getInstance() { return s_instance; };
+
+private:
 	int hitPoints;
 
 	int currentRace;
@@ -30,13 +44,5 @@ public:
 	int wisMod;
 	int chaMod;
 
-	character();
-	void update();
-	void addClass();
-	~character();
-
-	inline static const character* getInstance() { return s_instance; };
-
-private:
 	static character* s_instance;
 };
