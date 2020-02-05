@@ -23,6 +23,8 @@ public:
 
 	characterAttribute* attributes[6];
 
+	inline void setRaceBonus(int att, int value) { attributes[att]->raceBonus = value; attributes[att]->update(); };
+
 	attributesWidget(QWidget* parent = 0);
 	~attributesWidget();
 

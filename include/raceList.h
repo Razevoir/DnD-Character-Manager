@@ -1,5 +1,4 @@
-#ifndef _RACE_LIST_H
-#define _RACE_LIST_H
+#pragma once
 
 #include <string>
 #include <vector>
@@ -9,12 +8,7 @@ public:
 	struct race
 	{
 		std::string name;
-		int strBonus;
-		int dexBonus;
-		int conBonus;
-		int intBonus;
-		int wisBonus;
-		int chaBonus;
+		int bonus[6];
 	};
 	
 	std::vector<race*> races;
@@ -28,5 +22,3 @@ public:
 	~raceList();
 
 };
-
-#endif

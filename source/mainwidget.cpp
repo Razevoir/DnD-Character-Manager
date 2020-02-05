@@ -89,12 +89,10 @@ void MainWidget::updateRace(int index)
 	characterInstance.setRace(index);
 
 	auto races = characterInstance.getRaceList().races;
-	//attributeLayout->setRaceBonus(0, races.at(index)->strBonus);
-	//attributeLayout->setRaceBonus(1, races.at(index)->dexBonus);
-	//attributeLayout->setRaceBonus(2, races.at(index)->conBonus);
-	//attributeLayout->setRaceBonus(3, races.at(index)->intBonus);
-	//attributeLayout->setRaceBonus(4, races.at(index)->wisBonus);
-	//attributeLayout->setRaceBonus(5, races.at(index)->chaBonus);
+	for (unsigned int att = 0; att < 6; ++att)
+	{
+		attributeLayout->setRaceBonus(att, races.at(index)->bonus[att]);
+	}
 }
 
 /*void MainWidget::updateClass(int classIndex, int levelValue, int selectorIndex)

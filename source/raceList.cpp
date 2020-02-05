@@ -13,12 +13,12 @@ void raceList::addRace(std::string name, int strBonus, int dexBonus, int conBonu
 	races.push_back(newRace);
 	
 	newRace->name = name;
-	newRace->strBonus = strBonus;
-	newRace->dexBonus = dexBonus;
-	newRace->conBonus = conBonus;
-	newRace->intBonus = intBonus;
-	newRace->wisBonus = wisBonus;
-	newRace->chaBonus = chaBonus;
+	newRace->bonus[0] = strBonus;
+	newRace->bonus[1] = dexBonus;
+	newRace->bonus[2] = conBonus;
+	newRace->bonus[3] = intBonus;
+	newRace->bonus[4] = wisBonus;
+	newRace->bonus[5] = chaBonus;
 }
 
 void raceList::loadRaces(const char* fileName)
