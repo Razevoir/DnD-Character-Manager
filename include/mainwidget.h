@@ -25,7 +25,7 @@ public:
 
 public slots:
 	//void updateAttributes();
-	//void updateRace(int index);
+	void updateRace(int index);
 	//void updateClass(int classIndex, int levelValue, int selectorIndex);
 	//void updateLevel(int index);
 	//void addClass();
@@ -38,7 +38,7 @@ private:
 	QLabel* characterRaceLabel;
 	QComboBox* characterRaceMenu;
 
-	//attributesWidget* attributeLayout;
+	attributesWidget* attributeLayout;
 	//skillsWidget* skillsLayout;
 	//classSelector* selector;
 };

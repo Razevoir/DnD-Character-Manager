@@ -16,11 +16,13 @@ public:
 	void update();
 	void addClass();
 
-	inline const raceList& getRaces() const { return races; };
+	inline const raceList& getRaceList() const { return races; };
+	inline int getRace() { return currentRace; };
+	inline void setRace(int index) { currentRace = index; };
 
 	inline const classList& getClasses() const { return classes; };
 
-	inline static const character* getInstance() { return s_instance; };
+	inline static character* getInstance() { return s_instance; };
 
 private:
 	int hitPoints;

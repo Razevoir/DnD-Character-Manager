@@ -36,9 +36,9 @@ selectorWidget::~selectorWidget()
 	delete backgroundScroll;
 	delete addButton;
 	delete layout;
-	for (unsigned int i=0; i<selectors.size(); ++i)
+	for (auto i : selectors)
 	{
-		delete selectors[i];
+		delete i;
 	}
 }
 
@@ -49,7 +49,7 @@ void selectorWidget::updateClass(int classIndex, int levelValue, int selectorInd
 
 void selectorWidget::addClass()
 {
-	selectors.push_back(new classSelector(character::getInstance()->classes));
+	selectors.push_back(new classSelector(character::getInstance()->getClasses()));
 	backgroundLayout->addLayout(selectors.back()->layout);
 	connect(selectors.back(), &classSelector::classChanged, this, &selectorWidget::updateClass);
 	connect(selectors.back(), &classSelector::removeButtonPressed, this, &selectorWidget::removeClass);

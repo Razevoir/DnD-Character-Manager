@@ -17,12 +17,12 @@ MainWidget::MainWidget(QWidget *parent) :
 	characterRaceLabel = new QLabel(tr("Race:"));
 	characterRaceMenu = new QComboBox();
 
-	for (auto i : character::getInstance()->getRaces().races)
+	for (auto i : character::getInstance()->getRaceList().races)
 	{
 		characterRaceMenu->addItem(tr(i->name.c_str()));
 	}
-	//void (QComboBox::* raceSignal)(int) = & QComboBox::currentIndexChanged;
-	//connect(characterRaceMenu, raceSignal, this, &MainWidget::updateRace);
+	void (QComboBox::* raceSignal)(int) = & QComboBox::currentIndexChanged;
+	connect(characterRaceMenu, raceSignal, this, &MainWidget::updateRace);
 
 	QGridLayout* topLayout = new QGridLayout;
 	topLayout->addWidget(characterNameLabel, 0, 0);
@@ -38,12 +38,12 @@ MainWidget::MainWidget(QWidget *parent) :
 	healthLayout->addWidget(HPNameLabel);
 	healthLayout->addWidget(HPLabel);
 
-	selectorWidget* selector = new selectorWidget(character::getInstance()->getClasses());
+	//selectorWidget* selector = new selectorWidget(character::getInstance()->getClasses());
 
 	//connect(selector, &selectorWidget::classModified, this, &MainWidget::updateClass);
 	//connect(selector, &selectorWidget::classAdded, this, &MainWidget::addClass);
 
-	//attributeLayout = new attributesWidget();
+	attributeLayout = new attributesWidget();
 
 	//connect(attributeLayout, &attributesWidget::attributesChanged, this, &MainWidget::updateAttributes);
 
@@ -54,8 +54,8 @@ MainWidget::MainWidget(QWidget *parent) :
 	QVBoxLayout* statsLayout = new QVBoxLayout;
 	statsLayout->addLayout(topLayout);
 	statsLayout->addLayout(healthLayout);
-	statsLayout->addLayout(selector->layout);
-	//statsLayout->addLayout(attributeLayout->attributeLayout);
+	//statsLayout->addLayout(selector->layout);
+	statsLayout->addLayout(attributeLayout->attributeLayout);
 
 	QHBoxLayout* mainLayout = new QHBoxLayout;
 	mainLayout->addLayout(statsLayout);
@@ -74,7 +74,7 @@ MainWidget::~MainWidget()
    delete playerNameField;
    delete characterRaceLabel;
    delete characterRaceMenu;
-   //delete attributeLayout;
+   delete attributeLayout;
 }
 
 /*void MainWidget::updateAttributes()
@@ -83,15 +83,19 @@ MainWidget::~MainWidget()
 	character::getInstance()->update();
 }*/
 
-/*void MainWidget::updateRace(int index)
+void MainWidget::updateRace(int index)
 {
-	attributeLayout->setRaceBonus(0, races.races.at(index)->strBonus);
-	attributeLayout->setRaceBonus(1, races.races.at(index)->dexBonus);
-	attributeLayout->setRaceBonus(2, races.races.at(index)->conBonus);
-	attributeLayout->setRaceBonus(3, races.races.at(index)->intBonus);
-	attributeLayout->setRaceBonus(4, races.races.at(index)->wisBonus);
-	attributeLayout->setRaceBonus(5, races.races.at(index)->chaBonus);
-}*/
+	auto& characterInstance = *character::getInstance();
+	characterInstance.setRace(index);
+
+	auto races = characterInstance.getRaceList().races;
+	//attributeLayout->setRaceBonus(0, races.at(index)->strBonus);
+	//attributeLayout->setRaceBonus(1, races.at(index)->dexBonus);
+	//attributeLayout->setRaceBonus(2, races.at(index)->conBonus);
+	//attributeLayout->setRaceBonus(3, races.at(index)->intBonus);
+	//attributeLayout->setRaceBonus(4, races.at(index)->wisBonus);
+	//attributeLayout->setRaceBonus(5, races.at(index)->chaBonus);
+}
 
 /*void MainWidget::updateClass(int classIndex, int levelValue, int selectorIndex)
 {
