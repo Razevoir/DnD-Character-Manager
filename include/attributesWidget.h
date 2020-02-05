@@ -23,18 +23,9 @@ public:
 
 	characterAttribute* attributes[6];
 
-	int strMod;
-	int dexMod;
-	int conMod;
-	int intMod;
-	int wisMod;
-	int chaMod;
-
 	attributesWidget(QWidget* parent = 0);
-
-	void setRaceBonus(int attributeIndex, int bonus);
-		
 	~attributesWidget();
+
 public slots:
 	void updateStr(int modVal);
 	void updateDex(int modVal);

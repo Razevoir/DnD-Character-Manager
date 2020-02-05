@@ -48,6 +48,47 @@ void character::addClass()
 	classLevels.push_back(0);
 }
 
+void character::setAttribute(ATTRIBUTES att, int value)
+{
+	switch (att)
+	{
+		case ATTRIBUTES::STR:
+		{
+			strength.setValue(value);
+			return;
+		}
+		case ATTRIBUTES::DEX:
+		{
+			dexterity.setValue(value);
+			return;
+		}
+		case ATTRIBUTES::CON:
+		{
+			constitution.setValue(value);
+			return;
+		}
+		case ATTRIBUTES::INT:
+		{
+			intelligence.setValue(value);
+			return;
+		}
+		case ATTRIBUTES::WIS:
+		{
+			wisdom.setValue(value);
+			return;
+		}
+		case ATTRIBUTES::CHA:
+		{
+			charisma.setValue(value);
+			return;
+		}
+		default:
+		{
+			return;
+		}
+	}
+}
+
 character::~character()
 {
 

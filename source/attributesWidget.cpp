@@ -1,6 +1,7 @@
 #include "characterAttribute.h"
 #include "attributesWidget.h"
 #include <QtWidgets>
+#include "character.h"
 
 attributesWidget::attributesWidget(QWidget* parent)
 	: QWidget(parent),
@@ -26,45 +27,44 @@ attributesWidget::~attributesWidget()
 	delete attributeLayout;
 }
 
-void attributesWidget::setRaceBonus(int index, int bonus)
-{
-	attributes[index]->raceBonus = bonus;
-	attributes[index]->update();
-	emit attributesChanged();
-}
-
 void attributesWidget::updateStr(int modVal)
 {
-	strMod = modVal;
+	//strMod = modVal;
+	character::getInstance()->setAttribute(ATTRIBUTES::STR, modVal);
 	emit attributesChanged();
 }
 
 void attributesWidget::updateDex(int modVal)
 {
-	dexMod = modVal;
+	//dexMod = modVal;
+	character::getInstance()->setAttribute(ATTRIBUTES::DEX, modVal);
 	emit attributesChanged();
 }
 
 void attributesWidget::updateCon(int modVal)
 {
-	conMod = modVal;
+	//conMod = modVal;
+	character::getInstance()->setAttribute(ATTRIBUTES::CON, modVal);
 	emit attributesChanged();
 }
 
 void attributesWidget::updateInt(int modVal)
 {
-	intMod = modVal;
+	//intMod = modVal;
+	character::getInstance()->setAttribute(ATTRIBUTES::INT, modVal);
 	emit attributesChanged();
 }
 
 void attributesWidget::updateWis(int modVal)
 {
-	wisMod = modVal;
+	//wisMod = modVal;
+	character::getInstance()->setAttribute(ATTRIBUTES::WIS, modVal);
 	emit attributesChanged();
 }
 
 void attributesWidget::updateCha(int modVal)
 {
-	chaMod = modVal;
+	//chaMod = modVal;
+	character::getInstance()->setAttribute(ATTRIBUTES::CHA, modVal);
 	emit attributesChanged();
 }

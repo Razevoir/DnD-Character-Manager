@@ -5,16 +5,25 @@
 #include "skillList.h"
 #include <string>
 #include <vector>
+#include <cmath>
+
+enum class ATTRIBUTES { STR, DEX, CON, INT, WIS, CHA };
 
 struct attribute
 {
 	std::string name;
-	int value;
+	int base;
 	int modifier;
 	int ranks;
 	int racialBonus;
 	int misc;
 	int temp;
+
+	inline void setValue(int value)
+	{
+		base = value;
+		modifier = floor((((float) base + (float) ranks + (float) racialBonus + (float) misc + (float) temp) - 10.0f)/2.0f);
+	}
 };
 
 class character
@@ -32,6 +41,8 @@ public:
 	inline void setRace(int index) { currentRace = index; };
 
 	inline const classList& getClasses() const { return classes; };
+
+	void setAttribute(ATTRIBUTES att, int value);
 
 	inline static character* getInstance() { return s_instance; };
 
