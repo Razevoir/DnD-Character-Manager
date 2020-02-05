@@ -5,9 +5,10 @@
 #include "skillList.h"
 #include <string>
 #include <vector>
+#include <array>
 #include <cmath>
 
-enum class ATTRIBUTES { STR, DEX, CON, INT, WIS, CHA };
+enum class ATTRIBUTES { STR = 0, DEX, CON, INT, WIS, CHA };
 
 struct attribute
 {
@@ -59,7 +60,7 @@ private:
 	std::vector<int> knownClasses;
 	std::vector<int> classLevels;
 
-	attribute strength, dexterity, constitution, intelligence, wisdom, charisma;
+	std::array<attribute, 6> attributes;
 
 	static character* s_instance;
 };
