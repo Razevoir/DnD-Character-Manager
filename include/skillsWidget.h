@@ -23,7 +23,7 @@ public:
 
 	std::vector<int> modifiers;
 
-	skillsWidget(skillList* allSkills, QWidget* parent = 0);
+	skillsWidget(const skillList& allSkills, QWidget* parent = 0);
 
 	//void setRaceBonus(int skillIndex, int bonus);
 		

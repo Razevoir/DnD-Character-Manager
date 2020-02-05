@@ -1,8 +1,9 @@
 #include "selectorWidget.h"
+#include "character.h"
 
-selectorWidget::selectorWidget(classList* classesList)
+selectorWidget::selectorWidget(const classList& classesList)
 {
-	classes = classesList;
+	classes = &classesList;
 
 	backgroundLayout = new QVBoxLayout;
 
@@ -48,7 +49,7 @@ void selectorWidget::updateClass(int classIndex, int levelValue, int selectorInd
 
 void selectorWidget::addClass()
 {
-	selectors.push_back(new classSelector(classes));
+	selectors.push_back(new classSelector(character::getInstance()->classes));
 	backgroundLayout->addLayout(selectors.back()->layout);
 	connect(selectors.back(), &classSelector::classChanged, this, &selectorWidget::updateClass);
 	connect(selectors.back(), &classSelector::removeButtonPressed, this, &selectorWidget::removeClass);

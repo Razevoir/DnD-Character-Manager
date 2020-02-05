@@ -1,8 +1,8 @@
 #pragma once
 
-#include <QtWidgets>
 #include "raceList.h"
 #include "classList.h"
+#include "skillList.h"
 #include <string>
 #include <vector>
 
@@ -12,10 +12,11 @@ public:
 	int hitPoints;
 
 	int currentRace;
-	raceList* races;
+	raceList races;
 
-	int currentClass;
-	classList* classes;
+	classList classes;
+
+	skillList skills;
 
 	std::vector<int> knownClasses;
 	std::vector<int> classLevels;
@@ -29,9 +30,7 @@ public:
 	int wisMod;
 	int chaMod;
 
-	QLabel* HPLabel;
-
-	character(raceList* allRaces, classList* allClasses, QLabel* wHPLabel);
+	character();
 	void update();
 	void addClass();
 	~character();

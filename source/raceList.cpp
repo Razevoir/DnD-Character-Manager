@@ -28,6 +28,7 @@ void raceList::loadRaces(const char* fileName)
 	std::ifstream inFile(fileName);
 	if (!inFile)
 		return;
+
 	std::string name;
 	int strBonus;
 	int dexBonus;
@@ -51,8 +52,8 @@ void raceList::loadRaces(const char* fileName)
 raceList::~raceList()
 {
 	// Destructor
-	for (unsigned int i=0; i<races.size(); i++)
+	for (auto i : races)
 	{
-		delete races.at(i);
+		delete i;
 	}
 }

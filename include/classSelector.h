@@ -22,7 +22,7 @@ public:
 	int classIndex=0;
 	int levelValue=0;
 
-	classSelector(classList* classes, QWidget* parent = 0);
+	classSelector(const classList& classes, QWidget* parent = 0);
 
 	~classSelector();
 

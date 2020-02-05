@@ -1,7 +1,7 @@
 #include "classSelector.h"
 #include "classList.h"
 
-classSelector::classSelector(classList* classes, QWidget* parent)
+classSelector::classSelector(const classList& classes, QWidget* parent)
 	: QWidget(parent)
 {
 	menu = new QComboBox;
@@ -9,9 +9,9 @@ classSelector::classSelector(classList* classes, QWidget* parent)
 	removeButton = new QPushButton("Remove");
 	layout = new QHBoxLayout;
 
-	for (unsigned int i = 0; i < classes->classes.size(); i++)
+	for (unsigned int i = 0; i < classes.classes.size(); i++)
 	{
-		menu->addItem(/*tr*/(classes->classes.at(i)->name.c_str()));
+		menu->addItem(/*tr*/(classes.classes.at(i)->name.c_str()));
 	}
 
 	layout->addWidget(menu);

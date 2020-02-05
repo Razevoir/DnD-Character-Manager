@@ -11,7 +11,7 @@ class selectorWidget : public QWidget
 	Q_OBJECT
 
 public:
-	classList* classes;
+	const classList* classes;
 	std::vector<classSelector*> selectors;
 	QVBoxLayout* backgroundLayout;
 	QWidget* backgroundWidget;
@@ -19,7 +19,7 @@ public:
 	QVBoxLayout* layout;
 	QPushButton* addButton;
 
-	selectorWidget(classList* classes);
+	selectorWidget(const classList& classes);
 
 	~selectorWidget();
 

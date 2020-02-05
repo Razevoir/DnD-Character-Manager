@@ -2,16 +2,16 @@
 #include "skillsWidget.h"
 #include <QtWidgets>
 
-skillsWidget::skillsWidget(skillList* allSkills, QWidget* parent)
+skillsWidget::skillsWidget(const skillList& allSkills, QWidget* parent)
 	: QWidget(parent),
 	skillsLayout(new QGridLayout)
 	//strength("Strength", attributeLayout, 0),
 	//attributes{&strength, &dexterity, &constitution, &intelligence, &wisdom, &charisma}
 {
 	characterSkill* newSkill;
-	for (unsigned int i=0; i<allSkills->skills.size(); ++i)
+	for (unsigned int i=0; i<allSkills.skills.size(); ++i)
 	{
-		newSkill = new characterSkill(allSkills->skills.at(i)->name, skillsLayout, i);
+		newSkill = new characterSkill(allSkills.skills.at(i)->name, skillsLayout, i);
 		skills.push_back(newSkill);
 	}
 	backgroundWidget = new QWidget;

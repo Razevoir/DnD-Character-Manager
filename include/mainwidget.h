@@ -1,13 +1,10 @@
-#ifndef MAINWIDGET_H
-#define MAINWIDGET_H
+#pragma once
 
 #include <QWidget>
 #include <QLabel>
 #include <QLineEdit>
 #include <QComboBox>
-#include "raceList.h"
-#include "classList.h"
-#include "skillList.h"
+
 #include "classSelector.h"
 #include "character.h"
 #include "attributesWidget.h"
@@ -27,11 +24,11 @@ public:
 	~MainWidget(); // Destructor
 
 public slots:
-	void updateAttributes();
-	void updateRace(int index);
-	void updateClass(int classIndex, int levelValue, int selectorIndex);
+	//void updateAttributes();
+	//void updateRace(int index);
+	//void updateClass(int classIndex, int levelValue, int selectorIndex);
 	//void updateLevel(int index);
-	void addClass();
+	//void addClass();
 
 private:
 	QLabel* characterNameLabel;
@@ -40,13 +37,8 @@ private:
 	QLineEdit* playerNameField;
 	QLabel* characterRaceLabel;
 	QComboBox* characterRaceMenu;
-	attributesWidget* attributeLayout;
-	skillsWidget* skillsLayout;
-	raceList races;
-	classList classes;
-	skillList skills;
-	classSelector* selector;
-	character* primaryCharacter;
-};
 
-#endif // MAINWIDGET_H
+	//attributesWidget* attributeLayout;
+	//skillsWidget* skillsLayout;
+	//classSelector* selector;
+};
