@@ -43,6 +43,8 @@ public:
 
 	inline const classList& getClasses() const { return classes; };
 
+	inline const std::array<attribute, 6>& getAttributes() const { return attributes; };
+
 	void setAttribute(ATTRIBUTES att, int value);
 
 	inline static character* getInstance() { return s_instance; };

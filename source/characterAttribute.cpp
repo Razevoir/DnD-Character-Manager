@@ -3,16 +3,15 @@
 #include <QtGlobal>
 #include <Qt>
 
-characterAttribute::characterAttribute(std::string characterName, QGridLayout* layout, int row)
+characterAttribute::characterAttribute(std::string characterName, unsigned int row, QGridLayout* layout, int baseValue, int modValue, int ranksValue, int raceValue, int miscValue, int tempValue)
+	: name(characterName),
+	  modVal(modValue),
+	  baseVal(baseValue),
+	  raceBonus(raceValue),
+	  levelBonus(ranksValue),
+	  miscBonus(miscValue),
+	  tempBonus(tempValue)
 {
-	name = characterName;
-	modVal = 0;
-	baseVal = 10;
-	raceBonus = 0;
-	levelBonus = 0;
-	miscBonus = 0;
-	tempBonus = 0;
-
 	// GUI elements
 	nameLabel = new QLabel(name.c_str());
 	modLabel = new QLabel;

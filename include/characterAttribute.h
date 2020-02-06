@@ -37,7 +37,7 @@ public:
 
 	character** linkedCharacter;
 
-	/*explicit*/ characterAttribute(std::string name, QGridLayout* layout, int row);
+	characterAttribute(std::string name, unsigned int row, QGridLayout* layout, int baseValue = 10, int modValue = 0, int ranksValue = 0, int raceValue = 0, int miscValue = 0, int tempValue = 0);
 
 	void update();
 

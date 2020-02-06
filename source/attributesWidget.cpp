@@ -5,21 +5,12 @@
 
 attributesWidget::attributesWidget(QWidget* parent)
 	: QWidget(parent),
-	attributeLayout(new QGridLayout),
-	strength("Strength", attributeLayout, 0),
-	dexterity("Dexterity", attributeLayout, 1),
-	constitution("Constitution", attributeLayout, 2),
-	intelligence("Intelligence", attributeLayout, 3),
-	wisdom("Wisdom", attributeLayout, 4),
-	charisma("Charisma", attributeLayout, 5),
-	attributes{&strength, &dexterity, &constitution, &intelligence, &wisdom, &charisma}
+	attributeLayout(new QGridLayout)
 {
-	connect(&strength, &characterAttribute::modUpdated, this, &attributesWidget::updateStr);
-	connect(&dexterity, &characterAttribute::modUpdated, this, &attributesWidget::updateDex);
-	connect(&constitution, &characterAttribute::modUpdated, this, &attributesWidget::updateCon);
-	connect(&intelligence, &characterAttribute::modUpdated, this, &attributesWidget::updateInt);
-	connect(&wisdom, &characterAttribute::modUpdated, this, &attributesWidget::updateWis);
-	connect(&charisma, &characterAttribute::modUpdated, this, &attributesWidget::updateCha);
+	for (auto i : character::getInstance()->getAttributes())
+	{
+		attributes.push_back(std::make_unique<characterAttribute>(i.name, attributes.size(), attributeLayout, i.modifier, i.base, i.ranks, i.racialBonus, i.misc, i.temp));
+	}
 }
 		
 attributesWidget::~attributesWidget()
@@ -27,44 +18,8 @@ attributesWidget::~attributesWidget()
 	delete attributeLayout;
 }
 
-void attributesWidget::updateStr(int modVal)
+void attributesWidget::updateAttribute(int modVal)
 {
-	//strMod = modVal;
 	character::getInstance()->setAttribute(ATTRIBUTES::STR, modVal);
-	emit attributesChanged();
-}
-
-void attributesWidget::updateDex(int modVal)
-{
-	//dexMod = modVal;
-	character::getInstance()->setAttribute(ATTRIBUTES::DEX, modVal);
-	emit attributesChanged();
-}
-
-void attributesWidget::updateCon(int modVal)
-{
-	//conMod = modVal;
-	character::getInstance()->setAttribute(ATTRIBUTES::CON, modVal);
-	emit attributesChanged();
-}
-
-void attributesWidget::updateInt(int modVal)
-{
-	//intMod = modVal;
-	character::getInstance()->setAttribute(ATTRIBUTES::INT, modVal);
-	emit attributesChanged();
-}
-
-void attributesWidget::updateWis(int modVal)
-{
-	//wisMod = modVal;
-	character::getInstance()->setAttribute(ATTRIBUTES::WIS, modVal);
-	emit attributesChanged();
-}
-
-void attributesWidget::updateCha(int modVal)
-{
-	//chaMod = modVal;
-	character::getInstance()->setAttribute(ATTRIBUTES::CHA, modVal);
 	emit attributesChanged();
 }
