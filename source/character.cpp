@@ -58,6 +58,8 @@ void character::setAttribute(ATTRIBUTES att, int base, int ranks, int misc, int 
 	attributes[attInt].ranks = ranks;
 	attributes[attInt].misc = misc;
 	attributes[attInt].temp = temp;
+
+	update();
 }
 
 character::~character()

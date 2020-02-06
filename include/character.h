@@ -40,6 +40,7 @@ public:
 	inline const raceList& getRaceList() const { return races; };
 	inline int getRace() { return currentRace; };
 	inline void setRace(int index) { currentRace = index; };
+	inline int getRaceBonus(ATTRIBUTES index) { return races.races.at(currentRace)->bonus[(unsigned int) index]; };
 
 	inline const classList& getClasses() const { return classes; };
 

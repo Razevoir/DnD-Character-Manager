@@ -38,11 +38,15 @@ void characterAttribute::attributeChanged()
 	character* primaryCharacter = character::getInstance();
 
 	primaryCharacter->setAttribute(index, baseSpin->value(), levelSpin->value(), miscSpin->value(), tempSpin->value());
+
+	update();
 }
 
 void characterAttribute::update()
 {
+	character* primaryCharacter = character::getInstance();
 
+	raceLabel->setText(tr(std::to_string(primaryCharacter->getRaceBonus(index)).c_str()));
 }
 
 characterAttribute::~characterAttribute()
