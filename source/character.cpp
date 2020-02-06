@@ -30,6 +30,11 @@ character::character()
 
 void character::update()
 {
+	for (auto& att : attributes)
+	{
+		att.calculateModifier();
+	}
+
 	hitPoints = classes.classes[knownClasses[0]]->hitDie+attributes[(unsigned int) ATTRIBUTES::CON].modifier;
 	for (unsigned int i=0; i<knownClasses.size(); ++i)
 	{
@@ -42,7 +47,6 @@ void character::update()
 			hitPoints += (std::ceil(float((classes.classes[knownClasses[i]]->hitDie)+1.0)/2.0)+attributes[(unsigned int) ATTRIBUTES::CON].modifier)*std::max(classLevels[i]-1, 0);
 		}
 	}
-	//HPLabel->setText(std::to_string(hitPoints).c_str());
 }
 
 void character::addClass()

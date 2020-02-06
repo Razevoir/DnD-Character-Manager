@@ -20,9 +20,8 @@ struct attribute
 	int misc;
 	int temp;
 
-	inline void setValue(int value)
+	inline void calculateModifier()
 	{
-		base = value;
 		modifier = floor((((float) base + (float) ranks + (float) racialBonus + (float) misc + (float) temp) - 10.0f)/2.0f);
 	}
 };
@@ -47,6 +46,7 @@ public:
 	inline const std::array<attribute, 6>& getAttributes() const { return attributes; };
 
 	void setAttribute(ATTRIBUTES att, int base, int ranks, int misc, int temp);
+	inline int getAttributeModifier(ATTRIBUTES att) const { return attributes[(unsigned int) att].modifier; };
 
 	inline static character* getInstance() { return s_instance; };
 

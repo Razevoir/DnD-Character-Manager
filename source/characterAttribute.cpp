@@ -46,6 +46,7 @@ void characterAttribute::update()
 {
 	character* primaryCharacter = character::getInstance();
 
+	modLabel->setText(tr(std::to_string(primaryCharacter->getAttributeModifier(index)).c_str()));
 	raceLabel->setText(tr(std::to_string(primaryCharacter->getRaceBonus(index)).c_str()));
 }
 
