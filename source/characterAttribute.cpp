@@ -3,14 +3,9 @@
 #include <QtGlobal>
 #include <Qt>
 
-characterAttribute::characterAttribute(std::string characterName, unsigned int row, QGridLayout* layout, int baseValue, int modValue, int ranksValue, int raceValue, int miscValue, int tempValue)
+characterAttribute::characterAttribute(std::string characterName, unsigned int index, QGridLayout* layout)
 	: name(characterName),
-	  modVal(modValue),
-	  baseVal(baseValue),
-	  raceBonus(raceValue),
-	  levelBonus(ranksValue),
-	  miscBonus(miscValue),
-	  tempBonus(tempValue)
+	  index((ATTRIBUTES) index)
 {
 	// GUI elements
 	nameLabel = new QLabel(name.c_str());
@@ -23,36 +18,31 @@ characterAttribute::characterAttribute(std::string characterName, unsigned int r
 	miscSpin = new QSpinBox;
 	tempSpin = new QSpinBox;
 
-	layout->addWidget(nameLabel, row, 0);
-	layout->addWidget(modLabel, row, 1);
-	layout->addWidget(baseSpin, row, 2);
-	layout->addWidget(raceLabel, row, 3);
-	layout->addWidget(levelSpin, row, 4);
-	layout->addWidget(miscSpin, row, 5);
-	layout->addWidget(tempSpin, row, 6);
+	layout->addWidget(nameLabel, index, 0);
+	layout->addWidget(modLabel, index, 1);
+	layout->addWidget(baseSpin, index, 2);
+	layout->addWidget(raceLabel, index, 3);
+	layout->addWidget(levelSpin, index, 4);
+	layout->addWidget(miscSpin, index, 5);
+	layout->addWidget(tempSpin, index, 6);
 
 	void (QSpinBox::* mySignal)(int) = &QSpinBox::valueChanged;
-	connect(baseSpin, mySignal, this, &characterAttribute::update);
-	connect(levelSpin, mySignal, this, &characterAttribute::update);
-	connect(miscSpin, mySignal, this, &characterAttribute::update);
-	connect(tempSpin, mySignal, this, &characterAttribute::update);
+	connect(baseSpin, mySignal, this, &characterAttribute::attributeChanged);
+	connect(levelSpin, mySignal, this, &characterAttribute::attributeChanged);
+	connect(miscSpin, mySignal, this, &characterAttribute::attributeChanged);
+	connect(tempSpin, mySignal, this, &characterAttribute::attributeChanged);
+}
+
+void characterAttribute::attributeChanged()
+{
+	character* primaryCharacter = character::getInstance();
+
+	primaryCharacter->setAttribute(index, baseSpin->value(), levelSpin->value(), miscSpin->value(), tempSpin->value());
 }
 
 void characterAttribute::update()
 {
-	baseVal = baseSpin->value();
-	//raceBonus = 0;//races->races.at(currentRace)->conBonus;
-	levelBonus = levelSpin->value();
-	miscBonus = miscSpin->value();
-	tempBonus = tempSpin->value();
-	modVal = floor((float(baseVal+raceBonus+levelBonus+miscBonus+tempBonus)-10.0)/2.0);
 
-	raceLabel->setText(std::to_string(raceBonus).c_str());
-	modLabel->setText(std::to_string(modVal).c_str());
-
-	emit modUpdated(modVal);
-	//(*linkedCharacter)->conMod = modVal;
-	//(*linkedCharacter)->update();
 }
 
 characterAttribute::~characterAttribute()

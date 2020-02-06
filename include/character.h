@@ -45,7 +45,7 @@ public:
 
 	inline const std::array<attribute, 6>& getAttributes() const { return attributes; };
 
-	void setAttribute(ATTRIBUTES att, int value);
+	void setAttribute(ATTRIBUTES att, int base, int ranks, int misc, int temp);
 
 	inline static character* getInstance() { return s_instance; };
 

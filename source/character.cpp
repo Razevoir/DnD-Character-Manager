@@ -51,9 +51,13 @@ void character::addClass()
 	classLevels.push_back(0);
 }
 
-void character::setAttribute(ATTRIBUTES att, int value)
+void character::setAttribute(ATTRIBUTES att, int base, int ranks, int misc, int temp)
 {
-	attributes[(unsigned int) att].base = value;
+	unsigned int attInt = (unsigned int) att;
+	attributes[attInt].base = base;
+	attributes[attInt].ranks = ranks;
+	attributes[attInt].misc = misc;
+	attributes[attInt].temp = temp;
 }
 
 character::~character()

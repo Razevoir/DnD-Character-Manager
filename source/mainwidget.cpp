@@ -88,11 +88,11 @@ void MainWidget::updateRace(int index)
 	auto& characterInstance = *character::getInstance();
 	characterInstance.setRace(index);
 
-	auto races = characterInstance.getRaceList().races;
+	/*auto races = characterInstance.getRaceList().races;
 	for (unsigned int att = 0; att < 6; ++att)
 	{
 		attributeLayout->setRaceBonus(att, races.at(index)->bonus[att]);
-	}
+	}*/
 }
 
 /*void MainWidget::updateClass(int classIndex, int levelValue, int selectorIndex)

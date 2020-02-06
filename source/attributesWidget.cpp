@@ -9,7 +9,7 @@ attributesWidget::attributesWidget(QWidget* parent)
 {
 	for (auto i : character::getInstance()->getAttributes())
 	{
-		attributes.push_back(std::make_unique<characterAttribute>(i.name, attributes.size(), attributeLayout, i.modifier, i.base, i.ranks, i.racialBonus, i.misc, i.temp));
+		attributes.push_back(std::make_unique<characterAttribute>(i.name, attributes.size(), attributeLayout));
 	}
 }
 		
@@ -18,8 +18,8 @@ attributesWidget::~attributesWidget()
 	delete attributeLayout;
 }
 
-void attributesWidget::updateAttribute(int modVal)
+/*void attributesWidget::updateAttribute(ATTRIBUTES att, int modVal)
 {
-	character::getInstance()->setAttribute(ATTRIBUTES::STR, modVal);
+	character::getInstance()->setAttribute(att, modVal);
 	emit attributesChanged();
-}
+}*/

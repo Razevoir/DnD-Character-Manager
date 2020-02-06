@@ -16,13 +16,11 @@ public:
 	QGridLayout* attributeLayout;
 	std::vector<std::unique_ptr<characterAttribute>> attributes;
 
-	inline void setRaceBonus(int att, int value) { attributes[att]->raceBonus = value; attributes[att]->update(); };
-
 	attributesWidget(QWidget* parent = 0);
 	~attributesWidget();
 
 public slots:
-	void updateAttribute(int modVal);
+	//void updateAttribute(ATTRIBUTES att, int modVal);
 
 signals:
 	void attributesChanged();

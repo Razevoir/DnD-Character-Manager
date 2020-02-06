@@ -1,5 +1,4 @@
-#ifndef CHARACTER_ATTRIBUTE_H
-#define CHARACTER_ATTRIBUTE_H
+#pragma once
 
 #include <QObject>
 #include <string>
@@ -15,12 +14,7 @@ class characterAttribute : public QObject
 
 public:
 	std::string name;
-	int modVal;
-	int baseVal;
-	int raceBonus;
-	int levelBonus;
-	int miscBonus;
-	int tempBonus;
+	ATTRIBUTES index;
 
 	// GUI elements
 	QLabel* nameLabel;
@@ -32,13 +26,9 @@ public:
 	QSpinBox* tempSpin;
 	QHBoxLayout* layout;
 
-	raceList* races;
-	int currentRace = 0;
+	characterAttribute(std::string name, unsigned int index, QGridLayout* layout);
 
-	character** linkedCharacter;
-
-	characterAttribute(std::string name, unsigned int row, QGridLayout* layout, int baseValue = 10, int modValue = 0, int ranksValue = 0, int raceValue = 0, int miscValue = 0, int tempValue = 0);
-
+	void attributeChanged();
 	void update();
 
 	~characterAttribute();
@@ -46,5 +36,3 @@ public:
 signals:
 	void modUpdated(int modVal);
 };
-
-#endif
