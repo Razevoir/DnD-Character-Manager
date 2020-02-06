@@ -45,9 +45,15 @@ void characterAttribute::attributeChanged()
 void characterAttribute::update()
 {
 	character* primaryCharacter = character::getInstance();
+	const auto& att = primaryCharacter->getAttribute((ATTRIBUTES) index);
 
-	modLabel->setText(tr(std::to_string(primaryCharacter->getAttributeModifier(index)).c_str()));
-	raceLabel->setText(tr(std::to_string(primaryCharacter->getRaceBonus(index)).c_str()));
+	modLabel->setText(tr(std::to_string(att.modifier).c_str()));
+	raceLabel->setText(tr(std::to_string(att.racialBonus).c_str()));
+
+	baseSpin->setValue(att.base);
+	levelSpin->setValue(att.ranks);
+	miscSpin->setValue(att.misc);
+	tempSpin->setValue(att.temp);
 }
 
 characterAttribute::~characterAttribute()

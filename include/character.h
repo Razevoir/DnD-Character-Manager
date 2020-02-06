@@ -41,14 +41,12 @@ public:
 	inline const raceList& getRaceList() const { return races; };
 	inline int getRace() { return currentRace; };
 	void setRace(unsigned int index);
-	inline int getRaceBonus(ATTRIBUTES index) { return races.races.at(currentRace)->bonus[(unsigned int) index]; };
 
 	inline const classList& getClasses() const { return classes; };
 
-	inline const std::array<attribute, 6>& getAttributes() const { return attributes; };
-
+	inline const std::array<attribute, 6>& getAttributes() { return attributes; };
 	void setAttribute(ATTRIBUTES att, int base, int ranks, int misc, int temp);
-	inline int getAttributeModifier(ATTRIBUTES att) const { return attributes[(unsigned int) att].modifier; };
+	inline const attribute& getAttribute(ATTRIBUTES att) const { return attributes[(unsigned int) att]; };
 
 	inline static character* getInstance() { return s_instance; };
 
