@@ -6,12 +6,12 @@ character* character::s_instance = nullptr;
 
 character::character()
 	: attributes( {
-		attribute({"Strength", 10, 0, 0, 0, 0, 0}),
-		attribute({"Dexterity", 10, 0, 0, 0, 0, 0}),
-		attribute({"Constitution", 10, 0, 0, 0, 0, 0}),
-		attribute({"Intelligence", 10, 0, 0, 0, 0, 0}),
-		attribute({"Wisdom", 10, 0, 0, 0, 0, 0}),
-		attribute({"Charisma", 10, 0, 0, 0, 0, 0})
+		attribute({"Strength", 10, 0, 0, 0, 0, 0, 0}),
+		attribute({"Dexterity", 10, 0, 0, 0, 0, 0, 1}),
+		attribute({"Constitution", 10, 0, 0, 0, 0, 0, 2}),
+		attribute({"Intelligence", 10, 0, 0, 0, 0, 0, 3}),
+		attribute({"Wisdom", 10, 0, 0, 0, 0, 0, 4}),
+		attribute({"Charisma", 10, 0, 0, 0, 0, 0, 5})
 	})
 
 {
@@ -32,6 +32,7 @@ void character::update()
 {
 	for (auto& att : attributes)
 	{
+		att.racialBonus = races.races.at(currentRace)->bonus[att.index];
 		att.calculateModifier();
 	}
 
@@ -53,6 +54,12 @@ void character::addClass()
 {
 	knownClasses.push_back(0);
 	classLevels.push_back(0);
+}
+
+void character::setRace(unsigned int index)
+{
+	currentRace = index;
+	update();
 }
 
 void character::setAttribute(ATTRIBUTES att, int base, int ranks, int misc, int temp)

@@ -77,6 +77,11 @@ MainWidget::~MainWidget()
    delete attributeLayout;
 }
 
+void MainWidget::updateWindow()
+{
+	attributeLayout->update();
+}
+
 /*void MainWidget::updateAttributes()
 {
 	character::getInstance()->conMod = attributeLayout->conMod;
@@ -85,8 +90,9 @@ MainWidget::~MainWidget()
 
 void MainWidget::updateRace(int index)
 {
-	auto& characterInstance = *character::getInstance();
-	characterInstance.setRace(index);
+	auto characterInstance = character::getInstance();
+	characterInstance->setRace(index);
+	updateWindow();
 }
 
 /*void MainWidget::updateClass(int classIndex, int levelValue, int selectorIndex)

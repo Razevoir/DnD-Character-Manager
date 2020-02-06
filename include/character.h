@@ -20,6 +20,8 @@ struct attribute
 	int misc;
 	int temp;
 
+	unsigned int index;
+
 	inline void calculateModifier()
 	{
 		modifier = floor((((float) base + (float) ranks + (float) racialBonus + (float) misc + (float) temp) - 10.0f)/2.0f);
@@ -38,7 +40,7 @@ public:
 
 	inline const raceList& getRaceList() const { return races; };
 	inline int getRace() { return currentRace; };
-	inline void setRace(int index) { currentRace = index; };
+	void setRace(unsigned int index);
 	inline int getRaceBonus(ATTRIBUTES index) { return races.races.at(currentRace)->bonus[(unsigned int) index]; };
 
 	inline const classList& getClasses() const { return classes; };

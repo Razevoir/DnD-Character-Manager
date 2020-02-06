@@ -23,6 +23,8 @@ public:
 	explicit MainWidget(QWidget *parent = 0); //Constructor
 	~MainWidget(); // Destructor
 
+	void updateWindow();
+
 public slots:
 	//void updateAttributes();
 	void updateRace(int index);

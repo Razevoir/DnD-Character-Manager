@@ -19,6 +19,8 @@ public:
 	attributesWidget(QWidget* parent = 0);
 	~attributesWidget();
 
+	void update();
+
 public slots:
 	//void updateAttribute(ATTRIBUTES att, int modVal);
 

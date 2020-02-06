@@ -18,6 +18,14 @@ attributesWidget::~attributesWidget()
 	delete attributeLayout;
 }
 
+void attributesWidget::update()
+{
+	for (auto& i : attributes)
+	{
+		i->update();
+	}
+}
+
 /*void attributesWidget::updateAttribute(ATTRIBUTES att, int modVal)
 {
 	character::getInstance()->setAttribute(att, modVal);
