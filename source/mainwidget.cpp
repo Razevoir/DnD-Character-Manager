@@ -17,10 +17,16 @@ MainWidget::MainWidget(QWidget *parent) :
 	characterRaceLabel = new QLabel(tr("Race:"));
 	characterRaceMenu = new QComboBox();
 
-	for (auto i : character::getInstance()->getRaceList().races)
+	/*for (auto i : character::getInstance()->getRaceList().races)
 	{
 		characterRaceMenu->addItem(tr(i->name.c_str()));
+	}*/
+	for (int i = 0; i < character::getInstance()->getRaceCount(); ++i)
+	{
+		characterRaceMenu->addItem(tr(character::getInstance()->getRace(i).name.c_str()));
 	}
+
+
 	void (QComboBox::* raceSignal)(int) = & QComboBox::currentIndexChanged;
 	connect(characterRaceMenu, raceSignal, this, &MainWidget::updateRace);
 
