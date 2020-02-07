@@ -3,14 +3,14 @@
 #include <string>
 #include <vector>
 
+struct race
+{
+	std::string name;
+	int bonus[6];
+};
+	
 class raceList{
 public:
-	struct race
-	{
-		std::string name;
-		int bonus[6];
-	};
-	
 	std::vector<race*> races;
 
 //public:

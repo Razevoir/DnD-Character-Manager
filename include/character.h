@@ -39,12 +39,16 @@ public:
 	void addClass();
 
 	inline const raceList& getRaceList() const { return races; };
-	inline int getRace() { return currentRace; };
+	inline int getCurrentRace() { return currentRace; };
+	inline int getRaceCount() { return races.races.size(); };
+	inline const struct race& getRace(int index) { return *races.races.at(index); };
 	void setRace(unsigned int index);
 
 	inline const classList& getClasses() const { return classes; };
 
 	inline const std::array<attribute, 6>& getAttributes() { return attributes; };
+	inline int getAttributeCount() { return attributes.size(); };
+	inline const attribute& getAttribute(ATTRIBUTES index) { return attributes[(unsigned int) index]; };
 	void setAttribute(ATTRIBUTES att, int base, int ranks, int misc, int temp);
 	inline const attribute& getAttribute(ATTRIBUTES att) const { return attributes[(unsigned int) att]; };
 
