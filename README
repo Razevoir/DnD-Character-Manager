@@ -1,7 +1,16 @@
 Introduction:
 
-This project is a C++ implementation of my PyQt Dungeons and Dragons character manager application. There primary reason for the shift over to C++ was that I discovered that the PyQt implmentation of Qt doesn't properly integrate with the host operating system's Qt settings, resulting in an application that looks a bit out of place.
+DnD Character Manager is a project that aims to automate the tedium of writing down, erasing, recalculating, and rule checking all of the changes you'll invitably make to a character over the course of a Dungeons and Dragons campaign.
+It currently targets DnD 3.5, but I plan to add support for other systems as time goes on.
+
+The main reason this project is put together in C++ and not something that would have made the project much easier is that I wanted to experiment with developing software using various toolkits available on the market.
+I originallly started this project in Python using PyQt.
+I changed away from that because PyQt didn't link against the system version of Qt, resulting in a very non-native looking application.
 
 Build instructions:
 
-This project requires you to have the Qt developer tools installed (qmake and qtdeclarative5-dev), as well as the g++ compiler and GNU make. On Ubuntu systems, the only additional software you need should be included with the qt-default package. With all the required tools installed, you should be able to build simple by typing in "qmake" followed by "make" while you have the top level directory open.
+You'll need CMake to compile the project, whatever platform you're targeting.
+Then, you need to make sure that you have the right dependencies installed for whatever GUI API you want to build for.
+Navigate to the top directory of the project, type 'cmake .', then type 'make'.
+If you're targeting Windows with Visual Studio, you can just open the top level directory and VS will update the project for you.
+The Qt build currently supports all features of the core library, but the Win32 build is very bare bones.
