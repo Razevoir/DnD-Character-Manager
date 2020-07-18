@@ -17,9 +17,9 @@ public:
 	std::vector<std::unique_ptr<characterAttribute>> attributes;
 
 	attributesWidget(QWidget* parent = 0);
-	~attributesWidget();
+	virtual ~attributesWidget();
 
-	void update();
+	virtual void update();
 
 public slots:
 	//void updateAttribute(ATTRIBUTES att, int modVal);

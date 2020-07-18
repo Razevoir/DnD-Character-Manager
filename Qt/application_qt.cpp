@@ -26,3 +26,13 @@ void applicationQt::update()
 {
 
 }
+
+int main(int argc, char* argv[])
+{
+	character primaryCharacter;
+	std::unique_ptr<application> app = application::create(argc, argv);
+
+	app->run();
+
+	return 0;
+}

@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION "3.13")
 
 project("Application")
 
-#set(CMAKE_CXX_STANDARD 17)
-#set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 #add_compile_definitions(GLEW_STATIC)
 
@@ -13,7 +13,7 @@ project("Application")
 
 add_subdirectory("Core")
 add_subdirectory("Qt")
-add_subdirectory("Win32")
+#add_subdirectory("Win32")
 
 add_dependencies("Qt" "Core")
-add_dependencies("Win32" "Core")
+#add_dependencies("Win32" "Core")

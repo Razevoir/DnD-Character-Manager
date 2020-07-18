@@ -8,7 +8,6 @@ target_sources("Core" PUBLIC
 	application.h
 	character.cpp
 	character.h
-	characterAttribute.h
 	classList.cpp
 	classList.h
 	raceList.cpp
